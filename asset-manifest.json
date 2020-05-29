@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/react-netlify-forms/static/js/main.651f8232.chunk.js",
-    "main.js.map": "/react-netlify-forms/static/js/main.651f8232.chunk.js.map",
-    "runtime-main.js": "/react-netlify-forms/static/js/runtime-main.2e43e271.js",
-    "runtime-main.js.map": "/react-netlify-forms/static/js/runtime-main.2e43e271.js.map",
-    "static/css/2.d0ec6586.chunk.css": "/react-netlify-forms/static/css/2.d0ec6586.chunk.css",
-    "static/js/2.60c3f464.chunk.js": "/react-netlify-forms/static/js/2.60c3f464.chunk.js",
-    "static/js/2.60c3f464.chunk.js.map": "/react-netlify-forms/static/js/2.60c3f464.chunk.js.map",
-    "index.html": "/react-netlify-forms/index.html",
-    "precache-manifest.f0a74911aedcd5de0c27035be086d0d3.js": "/react-netlify-forms/precache-manifest.f0a74911aedcd5de0c27035be086d0d3.js",
-    "service-worker.js": "/react-netlify-forms/service-worker.js",
-    "static/css/2.d0ec6586.chunk.css.map": "/react-netlify-forms/static/css/2.d0ec6586.chunk.css.map",
-    "static/js/2.60c3f464.chunk.js.LICENSE.txt": "/react-netlify-forms/static/js/2.60c3f464.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/react-netlify-forms/static/media/architects-daughter-latin-400.83db1f97.woff"
+    "main.js": "./static/js/main.651f8232.chunk.js",
+    "main.js.map": "./static/js/main.651f8232.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.bed92872.js",
+    "runtime-main.js.map": "./static/js/runtime-main.bed92872.js.map",
+    "static/css/2.17fbe810.chunk.css": "./static/css/2.17fbe810.chunk.css",
+    "static/js/2.60c3f464.chunk.js": "./static/js/2.60c3f464.chunk.js",
+    "static/js/2.60c3f464.chunk.js.map": "./static/js/2.60c3f464.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.920a30b459d685c6636ee738fdacaa4e.js": "./precache-manifest.920a30b459d685c6636ee738fdacaa4e.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.17fbe810.chunk.css.map": "./static/css/2.17fbe810.chunk.css.map",
+    "static/js/2.60c3f464.chunk.js.LICENSE.txt": "./static/js/2.60c3f464.chunk.js.LICENSE.txt",
+    "static/media/index.css": "./static/media/architects-daughter-latin-400.83db1f97.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.2e43e271.js",
-    "static/css/2.d0ec6586.chunk.css",
+    "static/js/runtime-main.bed92872.js",
+    "static/css/2.17fbe810.chunk.css",
     "static/js/2.60c3f464.chunk.js",
     "static/js/main.651f8232.chunk.js"
   ]

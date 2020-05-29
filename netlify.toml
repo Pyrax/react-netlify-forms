@@ -1,4 +1,0 @@
-[build]
-  # base = "project/"
-  publish = "example/build/"
-  command = "yarn predeploy"

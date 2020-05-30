@@ -1,23 +1,29 @@
 {
   "name": "react-netlify-forms-example",
-  "homepage": ".",
+  "homepage": "https://pyrax.github.io/react-netlify-forms",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "gatsby": "^2.22.12",
+    "gatsby-plugin-manifest": "^2.4.9",
+    "gatsby-plugin-react-helmet": "^3.3.2",
+    "gatsby-plugin-theme-ui": "^0.3.0",
     "react": "link:../node_modules/react",
-    "react-dom": "link:../node_modules/react-dom",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.0.0",
     "react-netlify-forms": "link:..",
-    "react-scripts": "link:../node_modules/react-scripts",
     "theme-ui": "^0.3.1",
     "theme-ui-sketchy-preset": "^0.1.3",
     "typeface-architects-daughter": "^0.0.72",
     "typescript": "^3.9.3"
   },
   "scripts": {
-    "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
-    "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
-    "test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
-    "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
+    "start": "npm run develop",
+    "build": "gatsby build --prefix-paths",
+    "build:root": "gatsby build",
+    "develop": "gatsby develop",
+    "clean": "gatsby clean",
+    "test": "echo \"No tests available yet.\""
   },
   "eslintConfig": {
     "extends": "react-app"

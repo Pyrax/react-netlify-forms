@@ -4,12 +4,19 @@
 
 [![NPM](https://img.shields.io/npm/v/react-netlify-forms.svg)](https://www.npmjs.com/package/react-netlify-forms) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Before using:
+
+This component must be used with Server-Side Rendering (SSR) because Netlify
+searches for a `data-netlify` attribute on HTML form tags to setup their
+Forms backend for you.
+
+_Recommendations for SSR: GatsbyJS, Next.js, react-static_
+
 ## Features
 
-- Provides support for file uploads through standard input fields.
-- Spam prevention using honeypot fields and reCAPTCHA.
+- Support for file uploads.
+- Spam prevention through honeypot and reCAPTCHA components exported from this package.
 - Can be used alone or together with form libraries such as Formik.
-- Tested components for Netlify Forms.
 
 ## Install
 
@@ -31,7 +38,6 @@ yarn add react-netlify-forms
 import React, { Component } from 'react'
 
 import MyComponent from 'react-netlify-forms'
-import 'react-netlify-forms/dist/index.css'
 
 class Example extends Component {
   render() {

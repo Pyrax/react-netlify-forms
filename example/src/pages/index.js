@@ -1,10 +1,16 @@
 /** @jsx jsx */
-import { jsx, Button, Box, Container, Field, Heading, Textarea } from 'theme-ui'
+import React from 'react'
+import { Link } from 'gatsby'
+import { jsx, Button, Box, Field, Textarea } from 'theme-ui'
 import { NetlifyForm, Honeypot, Recaptcha } from 'react-netlify-forms'
-import 'typeface-architects-daughter'
 
-const App = () => (
-  <Container p={[2, null, 5]}>
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+
+const IndexPage = () => (
+  <Layout>
+    <SEO title='Home' />
+
     <NetlifyForm
       name='Contact'
       action='/thanks'
@@ -16,8 +22,6 @@ const App = () => (
         <Box>
           <Honeypot name='bot-field' label='Leave this field empty:' />
           {/*<Recaptcha siteKey='ejqoweo' invisible={true} />*/}
-
-          <Heading>Contact form example</Heading>
 
           <Box pt={2}>
             <Field label='Name:' name='name' onChange={handleChange} />
@@ -70,7 +74,7 @@ const App = () => (
         </Box>
       )}
       </NetlifyForm>*/}
-  </Container>
+  </Layout>
 )
 
-export default App
+export default IndexPage

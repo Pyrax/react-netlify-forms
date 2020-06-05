@@ -1,32 +1,64 @@
 /** @jsx jsx */
+import { jsx, Styled } from 'theme-ui'
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-import { jsx, Container, Heading } from 'theme-ui'
+import { Location } from '@reach/router'
+import { Container } from '@theme-ui/components'
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+import SEO from './seo'
+import NavLink from './nav-link'
+import MenuLinks from './menu-links.mdx'
+import Sidenav from './sidenav'
+import Pagination from './pagination'
 
-  return (
-    <Container p={[2, null, 5]}>
-      <header>
-        <Heading>Netlify Forms examples</Heading>
-      </header>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href='https://www.gatsbyjs.org'>Gatsby</a>
-      </footer>
-    </Container>
-  )
+const sidenavComponents = {
+  wrapper: Sidenav,
+  a: NavLink
 }
+
+const paginationComponents = {
+  wrapper: Pagination
+}
+
+const Layout = ({ children, ...props }) => (
+  <>
+    <SEO {...props} />
+    <div
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: ['100%', null, '1fr 2fr', '1fr 2fr 1fr'],
+        gridTemplateRows: ['1fr auto', null, '100%']
+      }}
+    >
+      <MenuLinks
+        components={sidenavComponents}
+        sx={{
+          py: [null, null, 3],
+          borderTop: (theme) => `2px solid ${theme.colors.muted}`
+        }}
+      />
+      <Container px={[3, null, 0]} py={[2, null, 3]}>
+        <main>
+          {children}
+          {
+            <Location
+              children={({ location }) => (
+                <MenuLinks
+                  sx={{ py: 4 }}
+                  pathname={location.pathname}
+                  components={paginationComponents}
+                />
+              )}
+            />
+          }
+        </main>
+        <footer sx={{ py: 2, textAlign: 'center' }}>
+          © {new Date().getFullYear()} Björn Clees, made with &#10084;
+          {` `}
+          <Styled.a href='https://www.gatsbyjs.org'>Gatsby</Styled.a>
+        </footer>
+      </Container>
+    </div>
+  </>
+)
 
 export default Layout

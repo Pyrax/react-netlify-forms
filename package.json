@@ -2,7 +2,7 @@
   "name": "react-netlify-forms",
   "version": "0.1.0",
   "description": "Reusable and customizable component for using Netlify Forms.",
-  "author": "Pyrax",
+  "author": "Björn Clees <Pyrax>",
   "license": "MIT",
   "repository": "Pyrax/react-netlify-forms",
   "main": "dist/index.js",
@@ -20,12 +20,12 @@
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "predeploy": "cd example && yarn install && yarn clean && yarn run build",
+    "predeploy": "cd example && yarn install && yarn clean && cp ../README.md README.md && cp ../LICENSE LICENSE && yarn run build",
     "deploy": "gh-pages -d example/public",
     "deploy:netlify": "cd example && yarn install && yarn clean && yarn run build:root && netlify deploy --prod --dir=public/"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.8.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
@@ -53,6 +53,7 @@
     "dist"
   ],
   "dependencies": {
+    "@theme-ui/presets": "^0.3.0",
     "react-google-recaptcha": "^2.0.1"
   }
 }

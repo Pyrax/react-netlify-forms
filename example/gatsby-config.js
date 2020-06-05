@@ -8,6 +8,14 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-theme-ui`,
+    `gatsby-plugin-catch-links`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: ['.mdx', '.md'],
+        remarkPlugins: [require('remark-slug')]
+      }
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

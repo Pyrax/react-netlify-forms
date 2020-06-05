@@ -48,7 +48,7 @@ class Example extends Component {
 
 ## License
 
-MIT © [Pyrax](https://github.com/Pyrax)
+MIT © [Björn Clees](https://github.com/Pyrax)
 
 ---
 

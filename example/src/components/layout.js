@@ -3,6 +3,7 @@ import { jsx, Styled } from 'theme-ui'
 import React from 'react'
 import { Location } from '@reach/router'
 import { Container } from '@theme-ui/components'
+import { Global } from '@emotion/core'
 
 import SEO from './seo'
 import NavLink from './nav-link'
@@ -22,11 +23,17 @@ const paginationComponents = {
 const Layout = ({ children, ...props }) => (
   <>
     <SEO {...props} />
+    <Global
+      styles={(theme) => ({
+        'html, body, #___gatsby, #gatsby-focus-wrapper': { height: '100%' } // sticky footer
+      })}
+    />
     <div
       sx={{
         display: 'grid',
         gridTemplateColumns: ['100%', null, '1fr 2fr', '1fr 2fr 1fr'],
-        gridTemplateRows: ['1fr auto', null, '100%']
+        gridTemplateRows: ['1fr auto', null, '100%'],
+        minHeight: '100%' // sticky footer
       }}
     >
       <MenuLinks

@@ -1,6 +1,6 @@
 {
   "name": "react-netlify-forms-example",
-  "homepage": "https://pyrax.github.io/react-netlify-forms",
+  "homepage": ".",
   "version": "0.0.0",
   "private": true,
   "dependencies": {

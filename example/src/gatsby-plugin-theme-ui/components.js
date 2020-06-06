@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import { Alert } from '@theme-ui/components'
 import code from '../components/code'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -51,7 +52,8 @@ const components = {
   h3: heading('h3'),
   h4: heading('h4'),
   h5: heading('h5'),
-  h6: heading('h6')
+  h6: heading('h6'),
+  Alert
 }
 
 export default components

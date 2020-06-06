@@ -86,5 +86,16 @@ export default merge(swiss, {
         bg: 'highlight'
       }
     }
+  },
+  alerts: {
+    muted: {
+      color: 'text',
+      bg: 'muted',
+      display: 'block',
+      border: (theme) => `2px solid ${theme.colors.highlight}`,
+      'h1:first-of-type, h2:first-of-type, h3:first-of-type, h4:first-of-type, h5:first-of-type, h6:first-of-type': {
+        mt: 2
+      }
+    }
   }
 })

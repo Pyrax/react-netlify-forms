@@ -17,7 +17,8 @@ Then, you can use the `NetlifyForm` component in place of the standard form tag.
   name='Contact'
   action='/thanks'
   onFormDataSent={(res) => {
-    console.log('Successfully sent form data to Netlify Server' + res)
+    console.log('Successfully sent form data to Netlify Server - got response:')
+    console.log(res)
   }}
 >
   {({ handleChange }) => (

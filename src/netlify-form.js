@@ -85,7 +85,7 @@ export const NetlifyForm = ({ children, ...props }) => {
         method='post'
         onSubmit={context.handleSubmit}
         onReset={context.handleReset}
-        data-netlify={true}
+        data-netlify
         data-netlify-honeypot={Boolean(context.honeypot)}
         data-netlify-recaptcha={Boolean(context.recaptcha)}
       >

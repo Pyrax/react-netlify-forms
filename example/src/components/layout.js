@@ -31,8 +31,8 @@ const Layout = ({ children, ...props }) => (
     <div
       sx={{
         display: 'grid',
-        gridTemplateColumns: ['100%', null, '1fr 2fr', '1fr 2fr 1fr'],
-        gridTemplateRows: ['1fr auto', null, '100%'],
+        gridTemplateColumns: ['auto', null, '1fr 2fr', '1fr 2fr 1fr'],
+        gridTemplateRows: ['1fr auto', null, 'auto'],
         minHeight: '100%' // sticky footer
       }}
     >
@@ -43,7 +43,7 @@ const Layout = ({ children, ...props }) => (
           borderTop: (theme) => `2px solid ${theme.colors.muted}`
         }}
       />
-      <Container px={[3, null, 0]} py={[2, null, 3]}>
+      <Container px={[3, null, null, 0]} py={[2, null, 3]}>
         <main>
           {children}
           {

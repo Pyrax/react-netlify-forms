@@ -4,13 +4,17 @@
 
 [![NPM](https://img.shields.io/npm/v/react-netlify-forms.svg)](https://www.npmjs.com/package/react-netlify-forms) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Before using:
+<Alert variant='muted'>
+
+## Before using
 
 This component must be used with Server-Side Rendering (SSR) because Netlify
-searches for a `data-netlify` attribute on HTML form tags to setup their
+searches for a `data-netlify` attribute on HTML `form` tags to setup their
 Forms backend for you.
 
-_Recommendations for SSR: GatsbyJS, Next.js, react-static_
+➡️ _Suggestions for SSR: GatsbyJS, Next.js, react-static_
+
+</Alert>
 
 ## Features
 

@@ -19,8 +19,6 @@ const flattenLinks = (children) =>
     return acc
   }, [])
 
-const removeSlash = (str) => (str.length > 1 ? str.replace(/\/$/, '') : str)
-
 const PaginationLink = ({
   label,
   children,
@@ -52,8 +50,7 @@ const PaginationLink = ({
 export default function ({ pathname = '', children, ...props }) {
   const links = flattenLinks(children)
   const index = links.findIndex(
-    (link) =>
-      React.isValidElement(link) && link.props.href === removeSlash(pathname)
+    (link) => React.isValidElement(link) && link.props.href === pathname
   )
   const hasPagination = index > -1
   const previous = links[index - 1]

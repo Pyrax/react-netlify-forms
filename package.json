@@ -20,9 +20,12 @@
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "predeploy": "cd example && yarn install && yarn clean && cp ../README.md README.md && cp ../LICENSE LICENSE && yarn run build",
-    "deploy": "gh-pages -d example/public",
-    "deploy:netlify": "cd example && yarn install && yarn clean && yarn run build:root && netlify deploy --prod --dir=public/"
+    "prepare-deploy": "cd example && yarn install && yarn clean && cp ../README.md README.md && cp ../LICENSE LICENSE",
+    "predeploy:default": "yarn prepare-deploy && cd example && yarn build",
+    "predeploy:prefix": "yarn prepare-deploy && cd example && yarn build:prefix",
+    "deploy": "yarn build && yarn deploy:gh",
+    "deploy:gh": "yarn build && yarn predeploy:prefix && gh-pages -d example/public",
+    "deploy:netlify": "yarn build && yarn predeploy:default && netlify deploy --prod --dir=example/public"
   },
   "peerDependencies": {
     "react": "^16.8.0"
@@ -54,6 +57,6 @@
   ],
   "dependencies": {
     "@theme-ui/presets": "^0.3.0",
-    "react-google-recaptcha": "^2.0.1"
+    "react-google-recaptcha": "^2.1.0"
   }
 }

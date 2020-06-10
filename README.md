@@ -4,6 +4,12 @@
 
 [![NPM](https://img.shields.io/npm/v/react-netlify-forms.svg)](https://www.npmjs.com/package/react-netlify-forms) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Features
+
+- Support for file uploads.
+- Spam prevention through honeypot and reCAPTCHA components exported from this package.
+- Can be used alone or together with form libraries such as Formik.
+
 <Alert variant='muted'>
 
 ## Before using
@@ -15,12 +21,6 @@ Forms backend for you.
 ➡️ _Suggestions for SSR: GatsbyJS, Next.js, react-static_
 
 </Alert>
-
-## Features
-
-- Support for file uploads.
-- Spam prevention through honeypot and reCAPTCHA components exported from this package.
-- Can be used alone or together with form libraries such as Formik.
 
 ## Install
 

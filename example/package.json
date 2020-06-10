@@ -30,8 +30,8 @@
   },
   "scripts": {
     "start": "npm run develop",
-    "build": "gatsby build --prefix-paths",
-    "build:root": "gatsby build",
+    "build": "gatsby build",
+    "build:prefix": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "clean": "gatsby clean",
     "test": "echo \"No tests available yet.\""

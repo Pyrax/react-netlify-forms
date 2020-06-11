@@ -1,27 +1,38 @@
 export default function (state, action) {
-  switch (action.type) {
-    case 'FORM_DATA_CHANGED':
-      const { name, value } = action.payload
+  const { type, payload } = action
+  switch (type) {
+    case 'CHANGE_FORM_DATA': {
+      const { name, value } = payload
       return {
         ...state,
-        formData: {
-          ...state.formData,
+        values: {
+          ...state.values,
           [name]: value
         }
       }
-    case 'FORM_RESET':
-      const initialData = action.payload
+    }
+    case 'RESET_FORM': {
+      const initialData = payload
       return {
         ...state,
-        formData: initialData
+        values: initialData
       }
-    case 'HONEYPOT_SET':
-      return { ...state, honeypot: action.payload }
-    case 'RECAPTCHA_SET':
-      return { ...state, recaptcha: action.payload }
-    case 'RECAPTCHA_VISIBILITY_CHANGED':
-      return { ...state, recaptchaInvisible: action.payload }
+    }
+    case 'SET_SUCCESS':
+      return { ...state, success: true, error: false }
+    case 'SET_ERROR':
+      return { ...state, success: false, error: true }
+    case 'SET_FORM_REF':
+      return { ...state, formRef: payload }
+    case 'SET_HONEYPOT_NAME':
+      return { ...state, honeypotName: payload }
+    case 'ENABLE_RECAPTCHA':
+      return { ...state, recaptchaEnabled: payload }
+    case 'SET_RECAPTCHA':
+      return { ...state, recaptcha: payload }
+    case 'SET_RECAPTCHA_VISIBLITY':
+      return { ...state, recaptchaVisible: payload }
     default:
-      throw new Error(`Action type "${action.type}" is not defined.`)
+      throw new Error(`Action type "${type}" is not defined.`)
   }
 }

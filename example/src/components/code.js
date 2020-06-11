@@ -8,7 +8,7 @@ import { previewTheme } from '../gatsby-plugin-theme-ui/index'
 
 const scope = {
   ...themeUI,
-  ...reactNetlifyForms,
+  ...reactNetlifyForms, // inject all exports from react-netlify-forms
   Link: (props) => {
     if (props.activeClassName)
       return <span className={props.activeClassName} {...props} />

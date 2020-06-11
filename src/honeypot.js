@@ -2,15 +2,21 @@ import React from 'react'
 import { useNetlifyFormContext } from './netlify-form-context'
 
 export const Honeypot = ({
-  name = '__honeypot',
-  label = `Don't fill out the following field:`
+  label = `Leave the following field empty:`,
+  ...props
 }) => {
-  const { handleChange, setHoneypot } = useNetlifyFormContext()
+  const { handleChange, honeypotName } = useNetlifyFormContext()
 
   return (
     <p hidden>
       <label>
-        {label} <input name={name} onChange={handleChange} ref={setHoneypot} />
+        {label}{' '}
+        <input
+          type='text'
+          {...props}
+          name={honeypotName}
+          onChange={handleChange}
+        />
       </label>
     </p>
   )

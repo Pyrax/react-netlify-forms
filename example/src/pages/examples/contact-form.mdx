@@ -7,7 +7,7 @@ title: Contact form example
 First, import required components in your class or function:
 
 ```js
-import { NetlifyForm, Honeypot /*, Recaptcha */ } from 'react-netlify-forms'
+import { NetlifyForm, Honeypot } from 'react-netlify-forms'
 ```
 
 Then, you can use the `NetlifyForm` component in place of the standard form tag. It will provide you form handlers, which manage submitting data to Netlify. Play around and modify this interactive example (`sx` is used for styling):
@@ -16,14 +16,25 @@ Then, you can use the `NetlifyForm` component in place of the standard form tag.
 <NetlifyForm
   name='Contact'
   action='/thanks'
-  onFormDataSent={(res) => {
-    console.log('Successfully sent form data to Netlify Server - got response:')
-    console.log(res)
+  honeypotName='bot-field'
+  onSuccess={(response, state) => {
+    console.log('Successfully sent form data to Netlify Server')
+    state.formRef.reset()
   }}
 >
-  {({ handleChange }) => (
+  {({ handleChange, success, error }) => (
     <>
-      <Honeypot name='bot-field' label='Leave this field empty:' />
+      <Honeypot />
+      {success && (
+        <p sx={{ variant: 'alerts.success', p: 3 }}>
+          Thanks for contacting us!
+        </p>
+      )}
+      {error && (
+        <p sx={{ variant: 'alerts.muted', p: 3 }}>
+          Sorry, we could not reach our servers. Please try again later.
+        </p>
+      )}
       <div>
         <label htmlFor='name' sx={{ variant: 'forms.label' }}>
           Name:

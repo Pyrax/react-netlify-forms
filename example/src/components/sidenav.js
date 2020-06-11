@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
 import { jsx } from 'theme-ui'
-import { NavLink } from '@theme-ui/components'
 
 const createNestedLinks = (children, depth = 0) =>
   React.Children.toArray(children).reduce((acc, child) => {

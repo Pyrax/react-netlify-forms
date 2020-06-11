@@ -7,7 +7,7 @@ export function useNetlifyForm({
   honeypotName,
   recaptchaEnabled,
   onSuccess,
-  onError
+  onFailure
 }) {
   const initialValues = {}
   const initialState = {
@@ -67,7 +67,7 @@ export function useNetlifyForm({
     })
     if (response.status !== 200) {
       dispatch({ type: 'SET_ERROR' })
-      return onError(response, state)
+      return onFailure(response, state)
     }
     dispatch({ type: 'SET_SUCCESS' })
     onSuccess(response, state)

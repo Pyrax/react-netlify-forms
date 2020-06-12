@@ -5,7 +5,7 @@ import { NetlifyFormProvider } from './netlify-form-context'
 
 export function useNetlifyForm({
   honeypotName,
-  recaptchaEnabled,
+  enableRecaptcha: recaptchaEnabled,
   onSuccess,
   onFailure
 }) {
@@ -15,13 +15,13 @@ export function useNetlifyForm({
     error: false,
     response: null,
     values: initialValues,
-    formRef: null,
     honeypotName,
-    recaptcha: null,
     recaptchaEnabled,
-    recaptchaVisible: true
+    recaptchaInvisible: false
   }
   const [state, dispatch] = React.useReducer(NetlifyFormReducer, initialState)
+  const formRef = React.useRef(null)
+  const recaptchaRef = React.useRef(null)
 
   const handleChange = ({ target: { name, value, files } }) => {
     dispatch({
@@ -48,15 +48,16 @@ export function useNetlifyForm({
     }
 
     if (state.recaptchaEnabled) {
-      if (!state.recaptcha.current) {
+      if (recaptchaRef.current === null) {
         throw new Error(
           'reCAPTCHA is enabled but reference not found, make sure you render the reCAPTCHA-component somewhere.'
         )
       }
-      const ref = state.recaptcha
-      const recaptchaValue = state.recaptchaVisible
-        ? ref.current.getValue()
-        : await ref.current.executeAsync()
+      const isRecaptchaInvisible =
+        recaptchaRef.current.props.size === 'invisible'
+      const recaptchaValue = isRecaptchaInvisible
+        ? await recaptchaRef.current.executeAsync()
+        : recaptchaRef.current.getValue()
 
       formData['g-recaptcha-response'] = recaptchaValue
     }
@@ -65,30 +66,19 @@ export function useNetlifyForm({
       method: 'POST',
       body: encodeFormData(formData)
     })
+    const context = { state, formRef, recaptchaRef }
     if (response.status !== 200) {
       dispatch({ type: 'SET_ERROR' })
-      return onFailure(response, state)
+      return onFailure(response, context)
     }
     dispatch({ type: 'SET_SUCCESS' })
-    onSuccess(response, state)
+    onSuccess(response, context)
   }
-  const setFormRef = React.useCallback((ref) => {
-    return dispatch({ type: 'SET_FORM_REF', payload: ref })
-  }, [])
   const setHoneypotName = React.useCallback((ref) => {
     return dispatch({ type: 'SET_HONEYPOT_NAME', payload: ref })
   }, [])
   const enableRecaptcha = React.useCallback((enable) => {
     return dispatch({ type: 'ENABLE_RECAPTCHA', payload: enable })
-  }, [])
-  const setRecaptcha = React.useCallback((ref) => {
-    return dispatch({ type: 'SET_RECAPTCHA', payload: ref })
-  }, [])
-  const setRecaptchaVisible = React.useCallback((visiblity) => {
-    return dispatch({
-      type: 'SET_RECAPTCHA_VISIBLITY',
-      payload: visiblity
-    })
   }, [])
 
   return {
@@ -97,11 +87,11 @@ export function useNetlifyForm({
     handleChange,
     handleSubmit,
     handleReset,
-    setFormRef,
     setHoneypotName,
     enableRecaptcha,
-    setRecaptcha,
-    setRecaptchaVisible
+    // references:
+    formRef,
+    recaptchaRef
   }
 }
 
@@ -128,7 +118,7 @@ export const NetlifyForm = ({
     <NetlifyFormProvider value={context}>
       <form
         {...props}
-        ref={context.setFormRef}
+        ref={context.formRef}
         name={name}
         action={action}
         method='post'

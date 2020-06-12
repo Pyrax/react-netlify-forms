@@ -6,9 +6,12 @@ import * as themeUI from 'theme-ui'
 import * as reactNetlifyForms from 'react-netlify-forms'
 import { previewTheme } from '../gatsby-plugin-theme-ui/index'
 
+const GATSBY_SITE_RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY
+
 const scope = {
   ...themeUI,
   ...reactNetlifyForms, // inject all exports from react-netlify-forms
+  GATSBY_SITE_RECAPTCHA_KEY,
   Link: (props) => {
     if (props.activeClassName)
       return <span className={props.activeClassName} {...props} />

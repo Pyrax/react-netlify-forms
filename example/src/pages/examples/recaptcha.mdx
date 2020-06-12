@@ -2,7 +2,7 @@
 title: reCAPTCHA example
 ---
 
-# Contact form with reCAPTCHA
+# Contact form with invisible reCAPTCHA
 
 First, import required components in your class or function:
 
@@ -10,23 +10,32 @@ First, import required components in your class or function:
 import { NetlifyForm, Honeypot, Recaptcha } from 'react-netlify-forms'
 ```
 
+Also make sure to set the following environment variables for Netlify:
+
+- `SITE_RECAPTCHA_KEY` (used by Netlify)
+- `SITE_RECAPTCHA_SECRET` (used by Netlify)
+
+Additionally, you need to make sure to pass `SITE_RECAPTCHA_KEY` as a prop to the reCAPTCHA-component.
+
+_This example is served by Gatsby and uses an additional variable called GATSBY_SITE_RECAPTCHA_KEY for that._
+
 Then, you can use the `NetlifyForm` component in place of the standard form tag. It will provide you form handlers, which manage submitting data to Netlify. Play around and modify this interactive example (`sx` is used for styling):
 
 ```jsx live
 <NetlifyForm
-  name='Contact'
+  name='reCAPTCHA example'
   action='/thanks'
   honeypotName='bot-field'
   enableRecaptcha
-  onSuccess={(res) => {
-    console.log('Successfully sent form data to Netlify Server - got response:')
-    console.log(res)
+  onSuccess={(response, context) => {
+    console.log('Successfully sent form data to Netlify Server')
+    context.formRef.current.reset()
   }}
 >
   {({ handleChange }) => (
     <>
       <Honeypot />
-      <Recaptcha />
+      <Recaptcha siteKey={GATSBY_SITE_RECAPTCHA_KEY} invisible />
 
       <div>
         <label htmlFor='name' sx={{ variant: 'forms.label' }}>

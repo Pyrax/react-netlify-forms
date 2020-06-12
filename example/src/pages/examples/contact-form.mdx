@@ -17,9 +17,9 @@ Then, you can use the `NetlifyForm` component in place of the standard form tag.
   name='Contact'
   action='/thanks'
   honeypotName='bot-field'
-  onSuccess={(response, state) => {
+  onSuccess={(response, context) => {
     console.log('Successfully sent form data to Netlify Server')
-    state.formRef.reset()
+    context.formRef.current.reset()
   }}
 >
   {({ handleChange, success, error }) => (

@@ -22,16 +22,10 @@ export default function (state, action) {
       return { ...state, success: true, error: false }
     case 'SET_ERROR':
       return { ...state, success: false, error: true }
-    case 'SET_FORM_REF':
-      return { ...state, formRef: payload }
     case 'SET_HONEYPOT_NAME':
       return { ...state, honeypotName: payload }
     case 'ENABLE_RECAPTCHA':
       return { ...state, recaptchaEnabled: payload }
-    case 'SET_RECAPTCHA':
-      return { ...state, recaptcha: payload }
-    case 'SET_RECAPTCHA_VISIBLITY':
-      return { ...state, recaptchaVisible: payload }
     default:
       throw new Error(`Action type "${type}" is not defined.`)
   }

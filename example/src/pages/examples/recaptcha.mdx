@@ -32,11 +32,20 @@ Then, you can use the `NetlifyForm` component in place of the standard form tag.
     context.formRef.current.reset()
   }}
 >
-  {({ handleChange }) => (
+  {({ handleChange, success, error }) => (
     <>
       <Honeypot />
       <Recaptcha siteKey={GATSBY_SITE_RECAPTCHA_KEY} invisible />
-
+      {success && (
+        <p sx={{ variant: 'alerts.success', p: 3 }}>
+          Thanks for contacting us!
+        </p>
+      )}
+      {error && (
+        <p sx={{ variant: 'alerts.muted', p: 3 }}>
+          Sorry, we could not reach our servers. Please try again later.
+        </p>
+      )}
       <div>
         <label htmlFor='name' sx={{ variant: 'forms.label' }}>
           Name:

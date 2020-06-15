@@ -2,15 +2,17 @@
 import { jsx, ThemeProvider, BaseStyles } from 'theme-ui'
 import Prism from '@theme-ui/prism'
 import { LiveProvider, LiveEditor, LivePreview, LiveError } from 'react-live'
+import { previewTheme } from '../gatsby-plugin-theme-ui/index'
 import * as themeUI from 'theme-ui'
 import * as reactNetlifyForms from 'react-netlify-forms'
-import { previewTheme } from '../gatsby-plugin-theme-ui/index'
+import { Formik } from 'formik'
 
 const GATSBY_SITE_RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY
 
 const scope = {
   ...themeUI,
   ...reactNetlifyForms, // inject all exports from react-netlify-forms
+  Formik,
   GATSBY_SITE_RECAPTCHA_KEY,
   Link: (props) => {
     if (props.activeClassName)

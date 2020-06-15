@@ -1,20 +1,25 @@
 import React from 'react'
-import { encodeFormData, isFunction, isEmptyChildren } from './utils'
+import { encodeFormData } from './utils'
 import NetlifyFormReducer from './netlify-form-reducer'
 import { NetlifyFormProvider } from './netlify-form-context'
+import { NetlifyFormComponent } from './netlify-form-component'
 
-export function useNetlifyForm({
+export const useNetlifyForm = ({
+  formName,
+  formAction,
   honeypotName,
   enableRecaptcha: recaptchaEnabled,
   onSuccess,
   onFailure
-}) {
+}) => {
   const initialValues = {}
   const initialState = {
     success: false,
     error: false,
     response: null,
     values: initialValues,
+    formName,
+    formAction,
     honeypotName,
     recaptchaEnabled,
     recaptchaInvisible: false
@@ -38,12 +43,15 @@ export function useNetlifyForm({
       payload: initialValues
     })
   }
-  const handleSubmit = async (event) => {
-    event.preventDefault()
+  const handleSubmit = async (event = null, values = {}) => {
+    if (event) {
+      event.preventDefault()
+    }
 
-    const form = event.target
+    const form = formRef.current
     const formData = {
       'form-name': form.getAttribute('name'),
+      ...values,
       ...state.values
     }
 
@@ -72,7 +80,7 @@ export function useNetlifyForm({
       return onFailure(response, context)
     }
     dispatch({ type: 'SET_SUCCESS' })
-    onSuccess(response, context)
+    return onSuccess(response, context)
   }
   const setHoneypotName = React.useCallback((ref) => {
     return dispatch({ type: 'SET_HONEYPOT_NAME', payload: ref })
@@ -95,49 +103,8 @@ export function useNetlifyForm({
   }
 }
 
-export const NetlifyForm = ({
-  children,
-  name = 'Form',
-  action,
-  honeypotName = '',
-  enableRecaptcha = false,
-  onSuccess,
-  ...props
-}) => {
-  const context = useNetlifyForm({ honeypotName, enableRecaptcha, onSuccess })
-
-  const conditionalProps = {}
-  if (context.honeypotName) {
-    conditionalProps['data-netlify-honeypot'] = context.honeypotName
-  }
-  if (context.recaptchaEnabled) {
-    conditionalProps['data-netlify-recaptcha'] = true
-  }
-
-  return (
-    <NetlifyFormProvider value={context}>
-      <form
-        {...props}
-        ref={context.formRef}
-        name={name}
-        action={action}
-        method='post'
-        onSubmit={context.handleSubmit}
-        onReset={context.handleReset}
-        data-netlify
-        {...conditionalProps}
-      >
-        {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-        <input type='hidden' name='form-name' value={name} />
-
-        {children
-          ? isFunction(children)
-            ? children(context)
-            : !isEmptyChildren(children)
-            ? React.Children.only(children)
-            : null
-          : null}
-      </form>
-    </NetlifyFormProvider>
-  )
-}
+export const NetlifyForm = ({ children, ...props }) => (
+  <NetlifyFormProvider {...props}>
+    <NetlifyFormComponent>{children}</NetlifyFormComponent>
+  </NetlifyFormProvider>
+)

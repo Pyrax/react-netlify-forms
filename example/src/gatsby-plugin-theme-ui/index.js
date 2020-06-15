@@ -19,6 +19,11 @@ const extendVariants = (variants, extend) =>
 
 export const previewTheme = merge(sketchy, {
   buttons: extendVariants(sketchy.buttons, buttonBase),
+  text: {
+    error: {
+      color: 'primaryDark'
+    }
+  },
   forms: {
     label: {
       width: '100%',

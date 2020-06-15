@@ -2,6 +2,104 @@
 title: Formik newsletter example
 ---
 
-# Formik newsletter signup
+# Formik newsletter example
 
-Coming soon
+In this example we will create a simple newsletter signup form with Formik. It only includes an email field which is validated client-side (note: client-side validation is not safe, thus you might see data other than emails in Netlify).
+
+First, we import our components from react-netlify-forms and Formik:
+
+```js
+import {
+  NetlifyFormProvider,
+  NetlifyFormComponent,
+  Honeypot
+} from 'react-netlify-forms'
+import { Formik } from 'formik'
+```
+
+In order to use Formik's handlers, we already need access to the submit handler from react-netlify-forms because, on submit, we first want to validate with Formik and then transmit the data to the server. Therefore, we have to use `NetlifyFormProvider` and `NetlifyFormComponent` to achieve this.
+
+`NetlifyFormProvider` gives us access to our context with a submit handler which sends data to Netlify. This handler is used in the Formik component on submit. Now, we receive a submission handler with validation from Formik which we pass to the form rendered by `NetlifyFormComponent`.
+
+Instead of managing form state through react-netlify-forms, it is now controlled by Formik with `handleChange`.
+
+Last but not least, validation logic is defined in Formik as a simple check whether input is filled and it matches a regular expression describing emails.
+
+See the full example in action here:
+
+```jsx live
+<NetlifyFormProvider
+  name='Formik example'
+  action='/thanks'
+  honeypotName='bot-field'
+  onSuccess={(response, context) => {
+    console.log('Successfully sent form data to Netlify Server')
+  }}
+>
+  {(netlify) => (
+    <Formik
+      initialValues={{ email: '' }}
+      onSubmit={(values) => {
+        netlify.handleSubmit(null, values)
+      }}
+      validate={(values) => {
+        const errors = {}
+        if (!values.email) {
+          errors.email = 'Email is required'
+        } else if (
+          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+        ) {
+          errors.email = 'Invalid email address'
+        }
+        return errors
+      }}
+    >
+      {(formik) => (
+        <NetlifyFormComponent
+          onSubmit={formik.handleSubmit}
+          onReset={formik.handleReset}
+        >
+          <Honeypot />
+          {netlify.success && (
+            <p sx={{ variant: 'alerts.success', p: 3 }}>
+              Thanks for contacting us!
+            </p>
+          )}
+          {netlify.error && (
+            <p sx={{ variant: 'alerts.muted', p: 3 }}>
+              Sorry, we could not reach our servers. Please try again later.
+            </p>
+          )}
+          <div>
+            <label htmlFor='email' sx={{ variant: 'forms.label' }}>
+              Email:
+            </label>
+            <input
+              type='email'
+              name='email'
+              id='email'
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+              sx={{
+                variant: 'forms.input'
+              }}
+            />
+            {formik.touched.email && formik.errors.email ? (
+              <div sx={{ variant: 'text.error' }}>{formik.errors.email}</div>
+            ) : null}
+          </div>
+          <div sx={{ pt: 3 }}>
+            <button type='submit' sx={{ variant: 'buttons.success' }}>
+              Submit
+            </button>
+            <button type='reset' sx={{ variant: 'buttons.danger' }}>
+              Reset
+            </button>
+          </div>
+        </NetlifyFormComponent>
+      )}
+    </Formik>
+  )}
+</NetlifyFormProvider>
+```

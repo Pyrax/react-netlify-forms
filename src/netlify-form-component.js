@@ -7,6 +7,7 @@ export const NetlifyFormComponent = ({ children, ...props }) => {
   const {
     formRef,
     formName,
+    formAction,
     honeypotName,
     recaptchaEnabled,
     handleSubmit,
@@ -25,6 +26,7 @@ export const NetlifyFormComponent = ({ children, ...props }) => {
     <form
       ref={formRef}
       method='post'
+      action={formAction}
       onSubmit={handleSubmit}
       onReset={handleReset}
       data-netlify

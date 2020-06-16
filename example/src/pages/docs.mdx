@@ -8,12 +8,14 @@ title: Documentation
 
 ### NetlifyForm
 
-Required props: name, action
+Required props: name, action (action should be set, so that the form also works without JavaScript)
 
-Required if using honeypot: honeypotName
+Required if using honeypot: honeypotName (it's recommended to use a honeypot)
 
 Required if using reCAPTCHA: enableRecaptcha
 
 ### Honeypot
 
 ### reCAPTCHA
+
+In Netlify dashboard you have to set SITE_RECAPTCHA_KEY and SITE_RECAPTCHA_SECRET

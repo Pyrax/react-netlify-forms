@@ -1,0 +1,92 @@
+---
+title: react-hook-form example
+---
+
+# react-hook-form example
+
+In this example we will create a simple newsletter signup form with Formik. It only includes an email field which we set as required field .
+
+First, we import our components from react-netlify-forms and Formik:
+
+```js
+import {
+  NetlifyForm,
+  useNetlifyFormContext,
+  Honeypot
+} from 'react-netlify-forms'
+import { useForm } from 'react-hook-form'
+```
+
+When creating our form, we now need to use from react-netlify-forms
+
+Then, you can use the `NetlifyForm` component in place of the standard form tag. It will provide you form handlers, which manage submitting data to Netlify. Play around and modify this interactive example (`sx` is used for styling):
+
+```jsx live
+function NewsletterForm() {
+  const { register, handleSubmit, reset, errors } = useForm({ mode: 'onBlur' })
+  const netlify = useNetlifyForm({
+    name: 'react-hook-form example',
+    action: '/thanks',
+    honeypotName: 'bot-field',
+    onSuccess: (response, context) => {
+      console.log('Successfully sent form data to Netlify Server')
+    }
+  })
+  const onSubmit = (data) => netlify.handleSubmit(null, data)
+
+  const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i
+
+  return (
+    <NetlifyFormProvider {...netlify}>
+      <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)}>
+        <Honeypot />
+        {netlify.success && (
+          <p sx={{ variant: 'alerts.success', p: 3 }}>
+            Thanks for contacting us!
+          </p>
+        )}
+        {netlify.error && (
+          <p sx={{ variant: 'alerts.muted', p: 3 }}>
+            Sorry, we could not reach our servers. Please try again later.
+          </p>
+        )}
+        <div>
+          <label htmlFor='email' sx={{ variant: 'forms.label' }}>
+            Email:
+          </label>
+          <input
+            type='email'
+            name='email'
+            id='email'
+            ref={register({
+              required: 'Email is required',
+              pattern: {
+                value: EMAIL_REGEX,
+                message: 'Invalid email address'
+              }
+            })}
+            sx={{
+              variant: 'forms.input'
+            }}
+          />
+          {errors.email && (
+            <div sx={{ variant: 'text.error' }}>{errors.email.message}</div>
+          )}
+        </div>
+        <div sx={{ pt: 3 }}>
+          <button type='submit' sx={{ variant: 'buttons.success' }}>
+            Submit
+          </button>
+          <button
+            type='reset'
+            onClick={() => reset()}
+            sx={{ variant: 'buttons.danger' }}
+          >
+            Reset
+          </button>
+        </div>
+      </NetlifyFormComponent>
+    </NetlifyFormProvider>
+  )
+}
+```

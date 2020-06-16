@@ -5,12 +5,12 @@ import { NetlifyFormProvider } from './netlify-form-context'
 import { NetlifyFormComponent } from './netlify-form-component'
 
 export const useNetlifyForm = ({
-  formName,
-  formAction,
-  honeypotName,
-  enableRecaptcha: recaptchaEnabled,
-  onSuccess,
-  onFailure
+  name = 'Form',
+  action = '',
+  honeypotName = '',
+  enableRecaptcha = false,
+  onSuccess = () => {},
+  onFailure = () => {}
 }) => {
   const initialValues = {}
   const initialState = {
@@ -18,10 +18,10 @@ export const useNetlifyForm = ({
     error: false,
     response: null,
     values: initialValues,
-    formName,
-    formAction,
+    formName: name,
+    formAction: action,
     honeypotName,
-    recaptchaEnabled,
+    recaptchaEnabled: enableRecaptcha,
     recaptchaInvisible: false
   }
   const [state, dispatch] = React.useReducer(NetlifyFormReducer, initialState)
@@ -48,9 +48,8 @@ export const useNetlifyForm = ({
       event.preventDefault()
     }
 
-    const form = formRef.current
     const formData = {
-      'form-name': form.getAttribute('name'),
+      'form-name': state.formName,
       ...values,
       ...state.values
     }
@@ -85,7 +84,7 @@ export const useNetlifyForm = ({
   const setHoneypotName = React.useCallback((ref) => {
     return dispatch({ type: 'SET_HONEYPOT_NAME', payload: ref })
   }, [])
-  const enableRecaptcha = React.useCallback((enable) => {
+  const enableRecaptchaHandler = React.useCallback((enable) => {
     return dispatch({ type: 'ENABLE_RECAPTCHA', payload: enable })
   }, [])
 
@@ -96,15 +95,19 @@ export const useNetlifyForm = ({
     handleSubmit,
     handleReset,
     setHoneypotName,
-    enableRecaptcha,
+    enableRecaptcha: enableRecaptchaHandler,
     // references:
     formRef,
     recaptchaRef
   }
 }
 
-export const NetlifyForm = ({ children, ...props }) => (
-  <NetlifyFormProvider {...props}>
-    <NetlifyFormComponent>{children}</NetlifyFormComponent>
-  </NetlifyFormProvider>
-)
+export const NetlifyForm = ({ children, formProps, ...props }) => {
+  const context = useNetlifyForm(props)
+
+  return (
+    <NetlifyFormProvider {...context}>
+      <NetlifyFormComponent {...formProps}>{children}</NetlifyFormComponent>
+    </NetlifyFormProvider>
+  )
+}

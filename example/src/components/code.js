@@ -5,14 +5,25 @@ import { LiveProvider, LiveEditor, LivePreview, LiveError } from 'react-live'
 import { previewTheme } from '../gatsby-plugin-theme-ui/index'
 import * as themeUI from 'theme-ui'
 import * as reactNetlifyForms from 'react-netlify-forms'
-import { Formik } from 'formik'
+import { Formik, useFormik } from 'formik'
+import { useForm } from 'react-hook-form'
 
 const GATSBY_SITE_RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY
+
+const formikComponents = {
+  Formik,
+  useFormik
+}
+
+const rhfComponents = {
+  useForm
+}
 
 const scope = {
   ...themeUI,
   ...reactNetlifyForms, // inject all exports from react-netlify-forms
-  Formik,
+  ...formikComponents, // specified imports from Formik
+  ...rhfComponents, // specified imports from react-hook-form
   GATSBY_SITE_RECAPTCHA_KEY,
   Link: (props) => {
     if (props.activeClassName)
@@ -21,7 +32,7 @@ const scope = {
   }
 }
 
-const injectJsx = (src) => `/** @jsx jsx */\n<>${src}</>`
+const injectJsx = (src) => `/** @jsx jsx */\n${src}`
 
 export const LiveCode = ({ children }) => (
   <LiveProvider code={children} scope={scope} transformCode={injectJsx}>

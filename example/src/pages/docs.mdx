@@ -8,14 +8,85 @@ title: Documentation
 
 ### NetlifyForm
 
+Initializes state and functions with `useNetlifyForm` and provides them with a context with `<NetlifyFormProvider/>`. Renders a form using `<NetlifyFormComponent/>` inside the context.
+
+Available props:
+
+| Name      | Required?    | Description                                                                                                                |
+| --------- | ------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| children  | required     | Children rendered inside the form like inputs.                                                                             |
+| formProps | not required | Additional props for the `<NetlifyFormComponent/>`. Can be used to override default methods like `onSubmit` and `onReset`. |
+| props     | not required | Passed as arguments to `useNetlifyForm` for setting options for the Netlify Form.                                          |
+
 Required props: name, action (action should be set, so that the form also works without JavaScript)
 
 Required if using honeypot: honeypotName (it's recommended to use a honeypot)
 
 Required if using reCAPTCHA: enableRecaptcha
 
+### useNetlifyForm
+
+Hook used by `<NetlifyForm />` to create handlers and state which are used inside the form context.
+
+Available props:
+
+| Name            | Required?    | Description                                                             |
+| --------------- | ------------ | ----------------------------------------------------------------------- |
+| name            | required     | Name of the form.                                                       |
+| action          | required     | Form action to fallback to when JavaScript is disabled.                 |
+| honeypotName    | not required | Needed when a honeypot is used because SSR needs to know it in advance. |
+| enableRecaptcha | not required | Set this if reCAPTCHA is used because SSR needs to know it in advance.  |
+| onSuccess       | not required | Handler when data has been submitted to Netlify.                        |
+| onFailure       | not required | Handler when Netlify sent an error.                                     |
+
+### NetlifyFormProvider
+
+Providing values to `NetlifyFormContext`.
+
+Available props:
+
+| Name     | Required? | Description          |
+| -------- | --------- | -------------------- |
+| children | required  | Children of context. |
+| props    | required  | Context values.      |
+
+### NetlifyFormContext
+
+Form context returned by `createContext`.
+
+### useNetlifyFormContext
+
+Hook-based variant for consuming `<NetlifyFormContext />`.
+
+### NetlifyFormComponent
+
+Renders a form with handlers provided by `NetlifyFormContext`.
+
+Available props:
+
+| Name     | Required? | Description                                                                                                 |
+| -------- | --------- | ----------------------------------------------------------------------------------------------------------- |
+| Children | required  | Form content like inputs.                                                                                   |
+| props    | required  | Additional props passed to the form. Can be used to override default methods like `onSubmit` and `onReset`. |
+
 ### Honeypot
+
+Component to create a honeypot field which provides extra spam prevention. If a bot fills this field, Netlify dismisses the submitted form data.
+
+Available props:
+
+| Name  | Required?    | Description                                 |
+| ----- | ------------ | ------------------------------------------- |
+| label | not required | Label as text before honeypot field.        |
+| props | not required | Additional props for input of the honeypot. |
 
 ### reCAPTCHA
 
-In Netlify dashboard you have to set SITE_RECAPTCHA_KEY and SITE_RECAPTCHA_SECRET
+In Netlify dashboard you have to set SITE_RECAPTCHA_KEY and SITE_RECAPTCHA_SECRET. Also, make sure to provide SITE_RECAPTCHA_KEY to the reCAPTCHA component on the client using `siteKey`-prop.
+
+Available props:
+
+| Name      | Required?    | Description                                       |
+| --------- | ------------ | ------------------------------------------------- |
+| siteKey   | required     | Recaptcha public site key.                        |
+| invisible | not required | Set whether reCAPTCHA should be invisible or not. |

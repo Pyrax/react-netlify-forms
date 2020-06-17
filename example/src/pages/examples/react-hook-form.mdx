@@ -4,22 +4,27 @@ title: react-hook-form example
 
 # react-hook-form example
 
-In this example we will create a simple newsletter signup form with Formik. It only includes an email field which we set as required field .
+In this example we will create a simple newsletter signup form with react-hook-form. It only includes an email field which is validated client-side (note: client-side validation is not safe, thus you might see data other than emails in Netlify).
 
-First, we import our components from react-netlify-forms and Formik:
+react-hook-form takes a hook-base approach. Therefore, we have to import `useNetlifyForm` and `useForm`. Furthermore, we have to use `NetlifyFormProvider` and `NetlifyFormComponent` to render the form with context ourselves:
 
 ```js
 import {
-  NetlifyForm,
-  useNetlifyFormContext,
+  useNetlifyForm,
+  NetlifyFormProvider,
+  NetlifyFormComponent,
   Honeypot
 } from 'react-netlify-forms'
 import { useForm } from 'react-hook-form'
 ```
 
-When creating our form, we now need to use from react-netlify-forms
+First, we will set react-hook-form up by calling the hook `useForm` with our desired options. Then do the same for react-netlify-forms with `useNetlifyForm`. We link the submit handler from react-hook-form which validates our input with react-netlify-forms with the one from react-netlify-forms which sends the values to the server. Later, we will pass this custom handler to `onSubmit` directly to the form component.
 
-Then, you can use the `NetlifyForm` component in place of the standard form tag. It will provide you form handlers, which manage submitting data to Netlify. Play around and modify this interactive example (`sx` is used for styling):
+`NetlifyFormProvider` enables us to create the corresponding context by passing Netlify functions through props. In the following, the context is consumed by `NetlifyFormComponent` to render a form with all neccessary attributes including our custom submit method.
+
+Instead of managing form state through react-netlify-forms, it is now controlled by react-hook-form. Validation logic is defined when registering an input. In this example, we only have one email input set as required and check if it matches a regular expression.
+
+See the full example in action here:
 
 ```jsx live
 function NewsletterForm() {

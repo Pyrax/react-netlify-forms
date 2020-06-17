@@ -26,6 +26,7 @@ export const NetlifyFormComponent = ({ children, ...props }) => {
     <form
       ref={formRef}
       method='post'
+      name={formName}
       action={formAction}
       onSubmit={handleSubmit}
       onReset={handleReset}

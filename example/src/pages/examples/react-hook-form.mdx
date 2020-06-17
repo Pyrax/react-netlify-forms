@@ -25,7 +25,7 @@ Then, you can use the `NetlifyForm` component in place of the standard form tag.
 function NewsletterForm() {
   const { register, handleSubmit, reset, errors } = useForm({ mode: 'onBlur' })
   const netlify = useNetlifyForm({
-    name: 'react-hook-form example',
+    name: 'react-hook-form',
     action: '/thanks',
     honeypotName: 'bot-field',
     onSuccess: (response, context) => {

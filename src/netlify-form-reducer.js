@@ -2,12 +2,12 @@ export default function (state, action) {
   const { type, payload } = action
   switch (type) {
     case 'CHANGE_FORM_DATA': {
-      const { name, value } = payload
+      const { name, value, type } = payload
       return {
         ...state,
         values: {
           ...state.values,
-          [name]: value
+          [name]: type !== 'checkbox' ? value : payload.checked
         }
       }
     }

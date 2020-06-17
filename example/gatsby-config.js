@@ -17,7 +17,10 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
-        remarkPlugins: [require('remark-slug')]
+        remarkPlugins: [
+          require('remark-slug'),
+          [require('remark-toc'), { tight: true }]
+        ]
       }
     },
     {

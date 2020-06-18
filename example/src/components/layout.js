@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import { Location } from '@reach/router'
 import { Container } from '@theme-ui/components'
@@ -63,6 +62,7 @@ const Layout = ({ children, ...props }) => (
         <footer sx={{ py: 2, textAlign: 'center' }}>
           © {new Date().getFullYear()} Björn Clees, made with &#10084; using
           {` `}
+          {/* eslint-disable-next-line react/jsx-pascal-case */}
           <Styled.a href='https://www.gatsbyjs.org'>Gatsby</Styled.a>
         </footer>
       </Container>

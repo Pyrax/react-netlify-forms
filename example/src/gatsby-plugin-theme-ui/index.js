@@ -72,6 +72,12 @@ export default merge(swiss, {
   styles: {
     pre: {
       ...github
+    },
+    // Responsive tables by default:
+    table: {
+      display: 'block',
+      width: '100%',
+      overflowX: 'auto'
     }
   },
   links: {

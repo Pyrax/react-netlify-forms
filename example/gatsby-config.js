@@ -19,7 +19,8 @@ module.exports = {
         extensions: ['.mdx', '.md'],
         remarkPlugins: [
           require('remark-slug'),
-          [require('remark-toc'), { tight: true }]
+          [require('remark-toc'), { tight: true }],
+          require('remark-abbr')
         ]
       }
     },

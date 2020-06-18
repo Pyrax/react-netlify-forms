@@ -1,6 +1,6 @@
 <center>
 
-<img src="cover.png" alt="react-netlify-forms" title="react-netlify-forms" style="padding:1rem 0.5rem 0rem 0.5rem; max-height:140px;" />
+<h1 style="display:none;">react-netlify-forms</h1>
 
 > Netlify Forms as component or hook with default form handlers. Honeypot fields and reCAPTCHA are included as ready-to-use components.
 

@@ -1,10 +1,14 @@
-# react-netlify-forms
+<center>
+
+<img src="cover.png" alt="react-netlify-forms" title="react-netlify-forms" style="padding:1rem 0.5rem 0rem 0.5rem; max-height:140px;" />
 
 > Netlify Forms as component or hook with default form handlers. Honeypot fields and reCAPTCHA are included as ready-to-use components.
 
 [![NPM](https://img.shields.io/npm/v/react-netlify-forms.svg)](https://www.npmjs.com/package/react-netlify-forms) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 [Go to documentation with live demo.](https://pyrax.github.io/react-netlify-forms)
+
+</center>
 
 ## Features
 

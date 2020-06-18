@@ -1,8 +1,6 @@
 import { merge } from 'theme-ui'
 
-import { swiss } from '@theme-ui/presets'
-import github from '@theme-ui/prism/presets/prism-tomorrow'
-
+import myTheme from './theme'
 import sketchy from 'theme-ui-sketchy-preset'
 import 'typeface-architects-daughter'
 
@@ -68,11 +66,8 @@ export const previewTheme = merge(sketchy, {
   }
 })
 
-export default merge(swiss, {
+export default merge(myTheme, {
   styles: {
-    pre: {
-      ...github
-    },
     // Responsive tables by default:
     table: {
       display: 'block',

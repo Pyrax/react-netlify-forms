@@ -87,22 +87,13 @@ export const theme = {
       fontFamily: 'monospace',
       fontSize: 1,
       p: 3,
-      color: 'text',
-      bg: 'muted',
-      overflow: 'auto',
-      code: {
-        color: 'inherit'
-      }
+      overflow: 'auto'
     },
     code: {
-      fontFamily: 'monospace',
-      color: 'secondary',
-      fontSize: 1
+      fontFamily: 'monospace'
     },
     inlineCode: {
-      fontFamily: 'monospace',
-      color: 'secondary',
-      bg: 'muted'
+      fontFamily: 'monospace'
     },
     table: {
       width: '100%',
@@ -135,21 +126,48 @@ export const theme = {
       maxWidth: '100%'
     }
   },
+  // Prism theme based on https://github.com/PrismJS/prism-themes/blob/master/themes/prism-duotone-forest.css
   prism: {
-    '.comment,.prolog,.doctype,.cdata,.punctuation,.operator,.entity,.url': {
-      color: 'gray'
+    backgroundColor: '#2a2d2a',
+    color: '#90c392',
+    '.comment,.prolog,.doctype,.cdata,.punctuation': {
+      color: '#779077'
     },
-    '.comment': {
+    '.namespace': {
+      opacity: 0.7
+    },
+    '.tag,.operator,.number': {
+      color: '#d0c14e'
+    },
+    '.property,.function': {
+      color: '#cebd8c'
+    },
+    '.tag-id,.selector,.atrule-id': {
+      color: '#f0fff0'
+    },
+    '.attr-name': {
+      color: '#b3d6b3'
+    },
+    '.boolean,.string,.entity,.url,.attr-value,.keyword,.control,.directive,.unit,.statement,.regex,.at-rule,.placeholder,.variable': {
+      color: '#cee073'
+    },
+    '.deleted': {
+      textDecorationLine: 'line-through'
+    },
+    '.inserted': {
+      textDecorationLine: 'underline'
+    },
+    '.italic': {
       fontStyle: 'italic'
     },
-    '.property,.tag,.boolean,.number,.constant,.symbol,.deleted,.function,.class-name,.regex,.important,.variable': {
-      color: 'purple'
+    '.important,.bold': {
+      fontWeight: 'bold'
     },
-    '.atrule,.attr-value,.keyword': {
-      color: 'primary'
+    '.important': {
+      color: '#b3d6b3'
     },
-    '.selector,.attr-name,.string,.char,.builtin,.inserted': {
-      color: 'secondary'
+    '.highlight': {
+      background: '#435643'
     }
   }
 }

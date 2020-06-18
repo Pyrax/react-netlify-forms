@@ -34,28 +34,35 @@ const scope = {
 
 const injectJsx = (src) => `/** @jsx jsx */\n${src}`
 
+const liveTheme = { styles: [] }
+
 export const LiveCode = ({ children }) => (
-  <LiveProvider code={children} scope={scope} transformCode={injectJsx}>
-    <BaseStyles>
-      <div
+  <LiveProvider
+    code={children}
+    scope={scope}
+    transformCode={injectJsx}
+    theme={liveTheme}
+  >
+    <div
+      sx={{
+        p: 2
+      }}
+    >
+      <ThemeProvider theme={previewTheme}>
+        <BaseStyles>
+          <LivePreview />
+        </BaseStyles>
+      </ThemeProvider>
+      <LiveError
         sx={{
-          p: 2
+          variant: 'alerts.danger',
+          p: 3,
+          mt: 4,
+          mb: 2
         }}
-      >
-        <ThemeProvider theme={previewTheme}>
-          <BaseStyles>
-            <LivePreview />
-          </BaseStyles>
-        </ThemeProvider>
-        <LiveError
-          sx={{
-            variant: 'alerts.danger',
-            p: 3,
-            mt: 4,
-            mb: 2
-          }}
-        />
-      </div>
+      />
+    </div>
+    <BaseStyles>
       <pre
         sx={{
           my: 4

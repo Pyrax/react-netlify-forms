@@ -69,35 +69,32 @@ const NavList = ({ LinkComponent, links, depth = 0 }) => (
   </ul>
 )
 
-const Sidenav = React.forwardRef(
-  ({ children, components = {}, className, ...props }, ref) => {
-    const links = createNestedLinks(children)
-    const Link = components.a || 'a'
+const Sidenav = ({ children, components = {}, className }) => {
+  const links = createNestedLinks(children)
+  const Link = components.a || 'a'
 
-    return (
-      <aside
-        ref={ref}
-        className={className}
-        sx={{
-          gridRow: [2, null, 1],
-          position: 'sticky',
-          top: [null, null, 0],
-          left: 0,
-          bottom: 0,
-          zIndex: 1,
-          width: [null, null, 256],
-          maxHeight: ['none', null, '100vh'],
-          overflowX: 'visible',
-          overflowY: 'auto',
-          bg: 'background'
-        }}
-      >
-        <div sx={{ p: [0, null, 3] }}>
-          <NavList links={links} LinkComponent={Link} />
-        </div>
-      </aside>
-    )
-  }
-)
+  return (
+    <aside
+      className={className}
+      sx={{
+        gridRow: [2, null, 1],
+        position: 'sticky',
+        top: [null, null, 0],
+        left: 0,
+        bottom: 0,
+        zIndex: 1,
+        width: [null, null, 256],
+        maxHeight: ['none', null, '100vh'],
+        overflowX: 'visible',
+        overflowY: 'auto',
+        bg: 'background'
+      }}
+    >
+      <div sx={{ p: [0, null, 3] }}>
+        <NavList links={links} LinkComponent={Link} />
+      </div>
+    </aside>
+  )
+}
 
 export default Sidenav

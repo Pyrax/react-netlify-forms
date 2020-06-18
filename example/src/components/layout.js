@@ -1,32 +1,34 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import React from 'react'
+import { MDXProvider } from '@mdx-js/react'
 import { Location } from '@reach/router'
 import { Container } from '@theme-ui/components'
 import { Global } from '@emotion/core'
 
 import SEO from './seo'
-import NavLink from './nav-link'
+import { MarkdownNavLink, MarkdownLink } from './markdown-link'
 import MenuLinks from './menu-links.mdx'
 import Sidenav from './sidenav'
 import Pagination from './pagination'
 
 const sidenavComponents = {
   wrapper: Sidenav,
-  a: NavLink
+  a: MarkdownNavLink
 }
 
 const paginationComponents = {
-  wrapper: Pagination
+  wrapper: Pagination,
+  a: MarkdownLink
 }
 
 const Layout = ({ children, ...props }) => (
-  <>
+  <MDXProvider>
     <SEO {...props} />
     <Global
-      styles={(theme) => ({
+      styles={{
         'html, body, #___gatsby, #gatsby-focus-wrapper': { height: '100%' } // sticky footer
-      })}
+      }}
     />
     <div
       sx={{
@@ -59,13 +61,13 @@ const Layout = ({ children, ...props }) => (
           }
         </main>
         <footer sx={{ py: 2, textAlign: 'center' }}>
-          © {new Date().getFullYear()} Björn Clees, made with &#10084;
+          © {new Date().getFullYear()} Björn Clees, made with &#10084; using
           {` `}
           <Styled.a href='https://www.gatsbyjs.org'>Gatsby</Styled.a>
         </footer>
       </Container>
     </div>
-  </>
+  </MDXProvider>
 )
 
 export default Layout

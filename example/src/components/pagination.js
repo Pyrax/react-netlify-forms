@@ -47,7 +47,7 @@ const PaginationLink = ({
   </a>
 )
 
-export default function ({ pathname = '', children, ...props }) {
+const Pagination = ({ pathname = '', children, ...props }) => {
   const links = flattenLinks(children)
   const index = links.findIndex(
     (link) => React.isValidElement(link) && link.props.href === pathname
@@ -73,3 +73,5 @@ export default function ({ pathname = '', children, ...props }) {
     </div>
   )
 }
+
+export default Pagination

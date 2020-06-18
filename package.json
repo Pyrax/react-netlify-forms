@@ -20,7 +20,7 @@
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "prepare-deploy": "cd example && yarn install && yarn clean && cp ../README.md README.md && cp ../LICENSE LICENSE.md",
+    "prepare-deploy": "cd example && yarn install && yarn clean && cp ../LICENSE LICENSE.md",
     "predeploy:default": "yarn prepare-deploy && cd example && yarn build",
     "predeploy:prefix": "yarn prepare-deploy && cd example && yarn build:prefix",
     "deploy": "yarn build && yarn deploy:gh",

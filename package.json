@@ -1,8 +1,20 @@
 {
   "name": "react-netlify-forms",
   "version": "0.1.0",
-  "description": "Reusable and customizable component for using Netlify Forms.",
-  "author": "Björn Clees <Pyrax>",
+  "homepage": "https://pyrax.github.io/react-netlify-forms",
+  "bugs": {
+    "url": "https://github.com/pyrax/react-netlify-forms/issues"
+  },
+  "description": "Netlify Forms as components and hook with default form handlers.",
+  "keywords": [
+    "react",
+    "netlify",
+    "forms",
+    "netlify-forms",
+    "react-netlify-form",
+    "react-netlify-forms"
+  ],
+  "author": "Björn Clees <piranhadev@gmail.com> (https://github.com/pyrax/)",
   "license": "MIT",
   "repository": "Pyrax/react-netlify-forms",
   "main": "dist/index.js",

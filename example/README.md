@@ -2,7 +2,7 @@
 
 <h1 style="display:none;">react-netlify-forms</h1>
 
-> Netlify Forms as component or hook with default form handlers. Honeypot fields and reCAPTCHA are included as ready-to-use components.
+> Netlify Forms as components and hook with default form handlers. Honeypot fields and reCAPTCHA are included as ready-to-use components.
 
 [![NPM](https://img.shields.io/npm/v/react-netlify-forms.svg)](https://www.npmjs.com/package/react-netlify-forms) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 

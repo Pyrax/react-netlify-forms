@@ -6,6 +6,32 @@ import code from '../components/code'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 
+const Anchor = ({ id }) => (
+  <a
+    aria-hidden
+    href={`#${id}`}
+    sx={{
+      position: 'absolute',
+      transform: 'translateX(-100%)',
+      mt: '-2px',
+      color: 'primary',
+      textDecoration: 'none',
+      ':focus .anchor-icon': {
+        visibility: 'visible'
+      }
+    }}
+  >
+    <FontAwesomeIcon
+      icon={faLink}
+      className='anchor-icon'
+      sx={{
+        visibility: 'hidden',
+        fontSize: 1
+      }}
+    />
+  </a>
+)
+
 const heading = (Tag) => (props) => {
   if (!props.id) return <Tag {...props} />
   return (
@@ -17,28 +43,7 @@ const heading = (Tag) => (props) => {
         }
       }}
     >
-      <a
-        href={`#${props.id}`}
-        sx={{
-          position: 'absolute',
-          transform: 'translateX(-100%)',
-          mt: '-2px',
-          color: 'primary',
-          textDecoration: 'none',
-          ':focus .anchor-icon': {
-            visibility: 'visible'
-          }
-        }}
-      >
-        <FontAwesomeIcon
-          icon={faLink}
-          className='anchor-icon'
-          sx={{
-            visibility: 'hidden',
-            fontSize: 1
-          }}
-        />
-      </a>
+      <Anchor {...props} />
       {props.children}
     </Tag>
   )

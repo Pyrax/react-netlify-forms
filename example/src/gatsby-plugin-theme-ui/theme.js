@@ -10,7 +10,7 @@ export const theme = {
   colors: {
     text: 'hsl(165, 20%, 20%)',
     background: 'hsl(190, 10%, 98%)',
-    primary: 'hsl(165, 60%, 30%)',
+    primary: 'hsl(165, 60%, 25%)',
     secondary: 'hsl(125, 80%, 35%)',
     highlight: 'hsl(114, 40%, 90%)',
     muted: 'hsl(165, 20%, 94%)',

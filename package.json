@@ -66,8 +66,6 @@
     "dist"
   ],
   "dependencies": {
-    "@theme-ui/presets": "^0.3.0",
-    "react-google-recaptcha": "^2.1.0",
-    "remark-abbr": "^1.4.0"
+    "react-google-recaptcha": "^2.1.0"
   }
 }

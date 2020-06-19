@@ -6,7 +6,7 @@ module.exports = {
   pathPrefix: `/react-netlify-forms`,
   siteMetadata: {
     title: `react-netlify-forms`,
-    description: `Netlify Forms as components and hook with default form handlers.`,
+    description: `React components and hooks giving you the power of Netlify Forms. Start building serverless forms on Netlify with React.`,
     author: `Pyrax`
   },
   plugins: [

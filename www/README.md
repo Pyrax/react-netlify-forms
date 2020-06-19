@@ -2,7 +2,7 @@
 
 <h1 style="display:none;">react-netlify-forms</h1>
 
-> Netlify Forms as components and hook with default form handlers. Honeypot fields and reCAPTCHA are included as ready-to-use components.
+> React components and hooks giving you the power of Netlify Forms. Start building serverless forms on Netlify with React. Honeypot fields and reCAPTCHA are included as ready-to-use components.
 
 [![NPM](https://img.shields.io/npm/v/react-netlify-forms.svg)](https://www.npmjs.com/package/react-netlify-forms) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -16,7 +16,7 @@
 
 ## Features
 
-Why should you use react-netlify-forms?
+It gives you all the features of Netlify Forms as simple and **reusable** React components which have been tested on Netlify.
 
 - Default form handlers with support for file uploads.
 - Spam prevention through included honeypot and reCAPTCHA components.

@@ -6,7 +6,7 @@ module.exports = {
   pathPrefix: `/react-netlify-forms`,
   siteMetadata: {
     title: `react-netlify-forms`,
-    description: `Reusable and customizable component for using Netlify Forms.`,
+    description: `Netlify Forms as components and hook with default form handlers.`,
     author: `Pyrax`
   },
   plugins: [
@@ -28,10 +28,10 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `react-netlify-forms`,
-        short_name: `Forms example`,
+        short_name: `react-netlify-forms`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
+        background_color: `#f9fafa`,
+        theme_color: `#1a6653`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`
       }

@@ -1,6 +1,9 @@
 name: github pages
 
 on:
+  pull_request:
+    branches:
+      - master
   push:
     branches:
       - master
@@ -26,7 +29,7 @@ jobs:
 
       - run: yarn install --frozen-lockfile
       - run: yarn test
-      - name: Build  # builds the docs site with --prefix-paths for gh-pages
+      - name: Build # builds the docs site with --prefix-paths for gh-pages
         run: |
           yarn predeploy:prefix
         env:

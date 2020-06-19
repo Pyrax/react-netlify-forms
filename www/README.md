@@ -6,7 +6,9 @@
 
 [![NPM](https://img.shields.io/npm/v/react-netlify-forms.svg)](https://www.npmjs.com/package/react-netlify-forms) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+<div style="display:none;" aria-hidden>
 [Go to documentation with live demo.](https://pyrax.github.io/react-netlify-forms)
+</div>
 
 </center>
 

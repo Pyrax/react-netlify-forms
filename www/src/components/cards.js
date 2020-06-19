@@ -6,7 +6,7 @@ const gridStyles = (columns = 2) => {
     listStyle: 'none',
     display: 'grid',
     gridTemplateColumns: ['auto', null, `repeat(${columns}, 1fr)`],
-    gridGap: 4,
+    gridGap: [2, null, 4],
     p: 0
   }
 }

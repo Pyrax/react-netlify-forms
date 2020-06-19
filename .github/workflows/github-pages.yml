@@ -26,7 +26,11 @@ jobs:
 
       - run: yarn install --frozen-lockfile
       - run: yarn test
-      - run: yarn predeploy:prefix  # builds the docs site with --prefix-paths for gh-pages
+      - name: Build  # builds the docs site with --prefix-paths for gh-pages
+        run: |
+          yarn predeploy:prefix
+        env:
+          GATSBY_SITE_RECAPTCHA_KEY: ${{ secrets.GATSBY_SITE_RECAPTCHA_KEY }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

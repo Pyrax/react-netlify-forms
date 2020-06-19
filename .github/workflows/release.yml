@@ -49,6 +49,7 @@ jobs:
         with:
           node-version: '12.x'
           registry-url: 'https://npm.pkg.github.com'
+          scope: '@Pyrax'
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -59,6 +60,6 @@ jobs:
             ${{ runner.os }}-node-
       - run: yarn install --frozen-lockfile
 
-      - run: yarn publish --registry=https://npm.pkg.github.com
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

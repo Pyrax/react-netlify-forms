@@ -1,8 +1,10 @@
 <center>
 
-<h1 style="display:none;">react-netlify-forms docs</h1>
+<h1 style="display:none;">react-netlify-forms</h1>
 
-**This README is a placeholder. It will be replaced by the README in the main directory on build. Please only edit the original README in the root.**
+> React components and hooks giving you the power of Netlify Forms. Start building serverless forms on Netlify with React. Honeypot fields and reCAPTCHA are included as ready-to-use components.
+
+[![NPM](https://img.shields.io/npm/v/react-netlify-forms.svg)](https://www.npmjs.com/package/react-netlify-forms) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 <div style="display:none;" aria-hidden>
 
@@ -11,6 +13,14 @@
 </div>
 
 </center>
+
+## Features
+
+It gives you all the features of Netlify Forms as simple and **reusable** React components which have been tested on Netlify.
+
+- Default form handlers with support for file uploads.
+- Spam prevention through included honeypot and reCAPTCHA components.
+- Can be used alone or together with form libraries such as Formik or react-hook-form.
 
 <Alert variant='muted'>
 

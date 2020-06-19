@@ -30,7 +30,7 @@
     "test": "run-s test:lint test:build",
     "test:build": "run-s build",
     "test:lint": "eslint .",
-    "prepare-deploy": "cd www && yarn install && yarn clean && cp ../LICENSE.md LICENSE.md",
+    "prepare-deploy": "cd www && yarn install && yarn clean && cp ../README.md README.md && cp ../LICENSE.md LICENSE.md",
     "predeploy:default": "yarn prepare-deploy && cd www && yarn build",
     "predeploy:prefix": "yarn prepare-deploy && cd www && yarn build:prefix",
     "deploy": "yarn build && yarn deploy:gh",

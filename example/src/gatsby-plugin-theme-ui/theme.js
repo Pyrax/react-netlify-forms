@@ -90,10 +90,13 @@ export const theme = {
       overflow: 'auto'
     },
     code: {
-      fontFamily: 'monospace'
+      fontFamily: 'monospace',
+      fontSize: 1
     },
     inlineCode: {
-      fontFamily: 'monospace'
+      fontFamily: 'monospace',
+      color: 'secondary',
+      bg: 'muted'
     },
     table: {
       width: '100%',

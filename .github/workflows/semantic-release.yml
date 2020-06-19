@@ -1,0 +1,35 @@
+name: semantic release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.yarn
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: yarn install --frozen-lockfile
+      - name: Check tests before release
+        run: yarn test
+
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          dry_run: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

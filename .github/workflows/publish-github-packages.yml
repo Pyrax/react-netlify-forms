@@ -1,15 +1,11 @@
-name: release
+name: publish github packages
 
 on:
-  pull_request:
-    branches:
-      - master
-  push:
-    branches:
-      - master
+  release:
+    types: [published]
 
 jobs:
-  semantic-release:
+  publish-gpr:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -18,6 +14,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@Pyrax'
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -27,14 +25,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: yarn install --frozen-lockfile
-      - name: Check tests before release
-        run: yarn test
 
-      - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v2
-        with:
-          extra_plugins: |
-            @semantic-release/git
+      - name: Autoscope package.json
+        uses: khaazz/action-autoscope@master
+
+      - run: yarn publish --registry=https://npm.pkg.github.com/Pyrax
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

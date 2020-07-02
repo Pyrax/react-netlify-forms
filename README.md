@@ -6,7 +6,6 @@
 
 [![NPM](https://flat.badgen.net/npm/v/react-netlify-forms)](https://www.npmjs.com/package/react-netlify-forms)
 [![minzipped package size](https://flat.badgen.net/bundlephobia/minzip/react-netlify-forms)](https://www.npmjs.com/package/react-netlify-forms)
-[![Build status](https://flat.badgen.net/github/status/Pyrax/react-netlify-forms)](https://github.com/Pyrax/react-netlify-forms/actions)
 [![JavaScript Style Guide](https://flat.badgen.net/badge/code%20style/standard/f2a)](https://standardjs.com)
 [![License](https://flat.badgen.net/github/license/Pyrax/react-netlify-forms)](https://github.com/Pyrax/react-netlify-forms/blob/master/LICENSE.md)
 

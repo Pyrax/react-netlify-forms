@@ -16,6 +16,8 @@ export const useNetlifyForm = ({
   const initialState = {
     success: false,
     error: false,
+    submitting: false,
+    submitted: false,
     response: null,
     values: initialValues,
     formName: name,
@@ -68,6 +70,8 @@ export const useNetlifyForm = ({
 
       formData['g-recaptcha-response'] = recaptchaValue
     }
+
+    dispatch({ type: 'SET_SUBMITTING' })
 
     const response = await fetch('/', {
       method: 'POST',

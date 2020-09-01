@@ -19,9 +19,17 @@ export default function (state, action) {
       }
     }
     case 'SET_SUCCESS':
-      return { ...state, success: true, error: false }
+      return {
+        ...state,
+        success: true,
+        error: false,
+        submitting: false,
+        submitted: true
+      }
     case 'SET_ERROR':
-      return { ...state, success: false, error: true }
+      return { ...state, success: false, error: true, submitting: false }
+    case 'SET_SUBMITTING':
+      return { ...state, submitting: true }
     case 'SET_HONEYPOT_NAME':
       return { ...state, honeypotName: payload }
     case 'ENABLE_RECAPTCHA':

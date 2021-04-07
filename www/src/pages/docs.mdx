@@ -84,10 +84,11 @@ In Netlify dashboard you have to set SITE_RECAPTCHA_KEY and SITE_RECAPTCHA_SECRE
 
 Available props:
 
-| Name      | Req | Description                                       |
-| --------- | --- | ------------------------------------------------- |
-| siteKey   | Y   | Recaptcha public site key.                        |
-| invisible | N   | Set whether reCAPTCHA should be invisible or not. |
+| Name      | Req | Description                                                                                                                                |
+| --------- | --- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| siteKey   | Y   | Recaptcha public site key.                                                                                                                 |
+| invisible | N   | Set whether reCAPTCHA should be invisible or not.                                                                                          |
+| *(any)*   | N   | Any other prop will be passed through to the [underlying component](https://www.npmjs.com/package/react-google-recaptcha#component-props). |
 
 <!-- prettier-ignore -->
 *[Req]: Required

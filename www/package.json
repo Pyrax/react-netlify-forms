@@ -15,7 +15,7 @@
     "gatsby": "2.22.12",
     "gatsby-plugin-catch-links": "^2.3.3",
     "gatsby-plugin-manifest": "^2.4.9",
-    "gatsby-plugin-mdx": "^1.2.13",
+    "gatsby-plugin-mdx": "^2.14.1",
     "gatsby-plugin-react-helmet": "^3.3.2",
     "gatsby-plugin-theme-ui": "^0.4.0-alpha.3",
     "react": "link:../node_modules/react",

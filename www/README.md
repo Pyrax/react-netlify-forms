@@ -43,11 +43,10 @@ yarn add react-netlify-forms
 In the following example a contact form with two inputs and a honeypot for extra spam prevention is shown. It also works without JavaScript by falling back to a serverside-rendered form which just submits data with an usual POST request:
 
 ```jsx
-import React, { Component } from 'react'
-
+import React from 'react'
 import { NetlifyForm, Honeypot } from 'react-netlify-forms'
 
-export default ContactForm = () => (
+const ContactForm = () => (
   <NetlifyForm name='Contact' action='/thanks' honeypotName='bot-field'>
     {({ handleChange, success, error }) => (
       <>
@@ -77,6 +76,8 @@ export default ContactForm = () => (
     )}
   </NetlifyForm>
 )
+
+export default ContactForm
 ```
 
 For more examples please browse through our website.

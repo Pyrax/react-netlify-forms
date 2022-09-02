@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Themed } from 'theme-ui'
 import { MDXProvider } from '@mdx-js/react'
 import { Location } from '@reach/router'
 import { Container } from '@theme-ui/components'
 import { Global } from '@emotion/core'
 
-import SEO from './seo'
+import { SEO } from './seo'
 import { MarkdownNavLink, MarkdownLink } from './markdown-link'
 import MenuLinks from './menu-links.mdx'
 import Sidenav from './sidenav'
@@ -63,7 +63,7 @@ const Layout = ({ children, ...props }) => (
           © {new Date().getFullYear()} Björn Clees, made with &#10084; using
           {` `}
           {/* eslint-disable-next-line react/jsx-pascal-case */}
-          <Styled.a href='https://www.gatsbyjs.org'>Gatsby</Styled.a>
+          <Themed.a href='https://www.gatsbyjs.org'>Gatsby</Themed.a>
         </footer>
       </Container>
     </div>

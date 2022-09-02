@@ -2,30 +2,30 @@ require('dotenv').config({
   path: `.env`
 })
 
+// Wrap ESM plugin to import them dynamically.
+// require('...') -> await import('...')
+const wrapESMPlugin = (name) =>
+  function wrapESM(opts) {
+    return async (...args) => {
+      const mod = await import(name)
+      const plugin = mod.default(opts)
+      return plugin(...args)
+    }
+  }
+
 module.exports = {
   pathPrefix: `/react-netlify-forms`,
   siteMetadata: {
     title: `react-netlify-forms`,
     description: `React components and hooks giving you the power of Netlify Forms. Start building serverless forms on Netlify with React.`,
-    author: `Pyrax`
+    image: `/favicon.png`,
+    siteUrl: `https://pyrax.github.io/react-netlify-forms/`
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-theme-ui`,
     `gatsby-plugin-catch-links`,
+    'gatsby-plugin-theme-ui',
     {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: ['.mdx', '.md'],
-        remarkPlugins: [
-          require('remark-slug'),
-          [require('remark-toc'), { tight: true }],
-          require('remark-abbr')
-        ]
-      }
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
         name: `react-netlify-forms`,
         short_name: `react-netlify-forms`,
@@ -35,6 +35,24 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/favicon.png`
       }
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        remarkPlugins: [
+          wrapESMPlugin('remark-slug'),
+          [wrapESMPlugin('remark-toc'), { tight: true }]
+        ]
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: './src/pages/'
+      },
+      __key: 'pages'
     }
   ]
 }

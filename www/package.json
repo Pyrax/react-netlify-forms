@@ -36,7 +36,7 @@
     "gatsby-source-filesystem": "^4.22.0",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
-    "react-hook-form": "^5.7.2",
+    "react-hook-form": "^7.34.2",
     "react-live": "^2.4.1",
     "react-netlify-forms": "link:..",
     "remark-slug": "^7.0.1",

@@ -28,7 +28,12 @@ See the full example in action here:
 
 ```jsx live
 function NewsletterForm() {
-  const { register, handleSubmit, reset, errors } = useForm({ mode: 'onBlur' })
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm({ mode: 'onBlur' })
   const netlify = useNetlifyForm({
     name: 'react-hook-form',
     action: '/thanks',
@@ -62,9 +67,8 @@ function NewsletterForm() {
           </label>
           <input
             type='email'
-            name='email'
             id='email'
-            ref={register({
+            {...register('email', {
               required: 'Email is required',
               pattern: {
                 value: EMAIL_REGEX,

@@ -1,69 +1,36 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useSiteMetadata } from '../hooks/use-site-metadata'
 
-function SEO(props) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  )
-  const { title, description } = props.pageContext.frontmatter || {}
+export const SEO = ({ title, subtitle, description, pathname, children }) => {
+  const {
+    title: defaultTitle,
+    description: defaultDescription,
+    image,
+    siteUrl
+  } = useSiteMetadata()
 
-  const metaTitle = title || site.siteMetadata.title
-  const metaDescription = description || site.siteMetadata.description
+  const seo = {
+    title: title || defaultTitle,
+    description: description || defaultDescription,
+    image: `${siteUrl}${image}`,
+    url: `${siteUrl}${pathname || ``}`
+  }
+
+  const fullTitle = subtitle ? `${subtitle} | ${seo.title}` : seo.title
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang: 'en-US'
-      }}
-      title={metaTitle}
-      titleTemplate={title ? `%s | ${site.siteMetadata.title}` : null}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription
-        },
-        {
-          property: `og:title`,
-          content: metaTitle
-        },
-        {
-          property: `og:description`,
-          content: metaDescription
-        },
-        {
-          property: `og:type`,
-          content: `website`
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author
-        },
-        {
-          name: `twitter:title`,
-          content: metaTitle
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription
-        }
-      ]}
-    />
+    <>
+      <title>{fullTitle}</title>
+      <meta name='description' content={seo.description} />
+      <meta name='image' content={seo.image} />
+
+      <meta property='og:title' content={fullTitle} />
+      <meta property='og:description' content={seo.description} />
+      <meta property='og:type' content='website' />
+      <meta property='og:site_name' content={seo.title} />
+
+      <link rel='icon' type='image/png' href='/favicon.png' />
+      {children}
+    </>
   )
 }
-
-export default SEO

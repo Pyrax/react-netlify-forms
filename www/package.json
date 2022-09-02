@@ -3,42 +3,47 @@
   "homepage": ".",
   "version": "0.0.0",
   "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.28",
-    "@fortawesome/free-solid-svg-icons": "^5.13.0",
-    "@fortawesome/react-fontawesome": "^0.1.10",
-    "@mdx-js/mdx": "^1.6.5",
-    "@mdx-js/react": "^1.6.5",
-    "@theme-ui/components": "^0.4.0-alpha.3",
-    "@theme-ui/prism": "^0.3.0",
-    "formik": "^2.1.4",
-    "gatsby": "2.22.12",
-    "gatsby-plugin-catch-links": "^2.3.3",
-    "gatsby-plugin-manifest": "^2.4.9",
-    "gatsby-plugin-mdx": "^1.2.13",
-    "gatsby-plugin-react-helmet": "^3.3.2",
-    "gatsby-plugin-theme-ui": "^0.4.0-alpha.3",
-    "react": "link:../node_modules/react",
-    "react-dom": "link:../node_modules/react-dom",
-    "react-helmet": "^6.0.0",
-    "react-hook-form": "^5.7.2",
-    "react-live": "^2.2.2",
-    "react-netlify-forms": "link:..",
-    "remark-abbr": "^1.4.0",
-    "remark-slug": "^6.0.0",
-    "remark-toc": "^7.0.0",
-    "theme-ui": "^0.4.0-alpha.3",
-    "theme-ui-sketchy-preset": "^0.1.3",
-    "typeface-architects-daughter": "^0.0.72",
-    "typescript": "^3.9.3"
-  },
+  "description": "www",
+  "author": "Pyrax",
+  "keywords": [
+    "gatsby"
+  ],
   "scripts": {
     "start": "npm run develop",
     "build": "gatsby build",
     "build:prefix": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
+    "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"No tests available yet.\""
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "@theme-ui/components": "^0.14.7",
+    "@theme-ui/prism": "^0.14.7",
+    "formik": "^2.2.9",
+    "gatsby": "^4.21.1",
+    "gatsby-plugin-catch-links": "^4.22.0",
+    "gatsby-plugin-manifest": "^4.22.0",
+    "gatsby-plugin-mdx": "^3.2.0",
+    "gatsby-plugin-theme-ui": "^0.14.7",
+    "gatsby-source-filesystem": "^4.22.0",
+    "react": "link:../node_modules/react",
+    "react-dom": "link:../node_modules/react-dom",
+    "react-hook-form": "^5.7.2",
+    "react-live": "^2.4.1",
+    "react-netlify-forms": "link:..",
+    "remark-slug": "^7.0.1",
+    "remark-toc": "^8.0.1",
+    "theme-ui": "^0.14.7",
+    "theme-ui-sketchy-preset": "^0.1.3",
+    "typeface-architects-daughter": "^1.1.13"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,5 +53,15 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.18.13",
+    "@babel/plugin-proposal-decorators": "^7.18.10",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.5",
+    "babel-preset-gatsby": "^2.22.0",
+    "core-js": "^3.25.0",
+    "eslint": "^8.23.0",
+    "webpack": "^5.74.0"
+  }
 }

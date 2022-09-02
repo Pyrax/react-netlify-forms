@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_netlify_forms_www=self.webpackChunkreact_netlify_forms_www||[]).push([[178],{90942:function(t,n,e){e.r(n),e.d(n,{_frontmatter:function(){return f},default:function(){return a}});var r=e(63366),o=(e(27378),e(64983)),c=e(54330),s=["components"],f={},u={_frontmatter:f};function a(t){var n=t.components,e=(0,r.Z)(t,s);return(0,o.kt)("wrapper",Object.assign({},u,e,{components:n,mdxType:"MDXLayout"}),(0,o.kt)(c.Z,{mdxType:"License"}))}a.isMDXComponent=!0}}]);
+//# sourceMappingURL=component---src-pages-license-mdx-7b6fb53b0407ecc136d2.js.map

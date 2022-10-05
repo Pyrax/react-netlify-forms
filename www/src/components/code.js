@@ -78,5 +78,8 @@ export default (props) => {
   if (props.live) {
     return <LiveCode {...props} />
   }
+  if (props.bare) {
+    return <code {...props} />
+  }
   return <Prism {...props} />
 }

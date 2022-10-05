@@ -23,6 +23,22 @@ export const previewTheme = merge(sketchy, {
     }
   },
   forms: {
+    inline: {
+      display: 'flex',
+      flexFlow: 'row nowrap'
+    },
+    inlineInput: {
+      display: 'flex',
+      flex: '1 0',
+      p: 2,
+      mr: 3,
+      fontSize: 'inherit',
+      lineHeight: 'inherit',
+      border: '1px solid',
+      color: 'inherit',
+      bg: 'transparent',
+      ...sketchy.forms.input
+    },
     label: {
       width: '100%',
       display: 'flex'
@@ -101,9 +117,17 @@ export default merge(myTheme, {
       borderRadius: '2px',
       borderStyle: 'solid',
       borderColor: 'highlight',
-      'h1:first-of-type, h2:first-of-type, h3:first-of-type, h4:first-of-type, h5:first-of-type, h6:first-of-type': {
-        mt: 2
-      }
+      'h1:first-of-type, h2:first-of-type, h3:first-of-type, h4:first-of-type, h5:first-of-type, h6:first-of-type':
+        {
+          mt: 2
+        }
+    }
+  },
+  list: {
+    inline: {
+      listStyle: 'none',
+      display: 'flex',
+      flexFlow: 'row wrap'
     }
   }
 })

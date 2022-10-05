@@ -4,6 +4,8 @@ title: Contact form example
 
 # Contact form
 
+## Get started
+
 First, import required components in your class or function:
 
 ```js
@@ -73,3 +75,61 @@ Then, you can use the `NetlifyForm` component in place of the standard form tag.
   )}
 </NetlifyForm>
 ```
+
+## Using context
+
+Now, that we know how to quickly build a form, let us take a closer look at how we can get control over the form.
+This is where context jumps in. Actually, we already used it. We consumed it as children of `NetlifyForm` to get access to state and form handlers.
+We could also use it to access `formRef` and manually reset the form as this example shows:
+
+```jsx live
+<NetlifyForm name='Contact' action='/thanks' honeypotName='bot-field'>
+  {({ handleChange, formRef }) => (
+    <div sx={{ variant: 'forms.inline' }}>
+      <input
+        type='text'
+        name='name'
+        id='name'
+        onChange={handleChange}
+        sx={{ variant: 'forms.inlineInput' }}
+      />
+      {/* This button, for example, uses the context to access formRef and then
+       ** programmatically reset this form. */}
+      <button
+        type='button'
+        sx={{ variant: 'buttons.danger' }}
+        onClick={() => formRef.current.reset()}
+      >
+        Custom reset button
+      </button>
+    </div>
+  )}
+</NetlifyForm>
+```
+
+Same example, without destructuring, makes it clear where we access the context:
+
+```jsx live
+<NetlifyForm name='Contact' action='/thanks' honeypotName='bot-field'>
+  {(context) => (
+    <div sx={{ variant: 'forms.inline' }}>
+      <input
+        type='text'
+        name='name'
+        id='name'
+        onChange={context.handleChange}
+        sx={{ variant: 'forms.inlineInput' }}
+      />
+      <button
+        type='button'
+        sx={{ variant: 'buttons.danger' }}
+        onClick={() => context.formRef.current.reset()}
+      >
+        Custom reset button
+      </button>
+    </div>
+  )}
+</NetlifyForm>
+```
+
+Head over to the docs for a [complete list of context variables](/docs/#netlifyformcontext).

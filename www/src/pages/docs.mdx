@@ -2,6 +2,8 @@
 title: Documentation
 ---
 
+import { NetlifyForm } from 'react-netlify-forms'
+
 # Documentation
 
 ## Table of Contents
@@ -50,7 +52,26 @@ Available props:
 
 ### NetlifyFormContext
 
-Form context returned by `createContext`.
+Form context which exposes form state, handlers and actions for consumers.
+
+<NetlifyForm>
+  {(context) => (
+    <>
+      These are the props available through context:{' '}
+      <ul sx={{ variant: 'list.inline' }}>
+        {Object.keys(context).map((x) => (
+          <li key={`ctx-var-${x}`} sx={{ px: 2 }}>
+            <code bare sx={{ variant: 'styles.inlineCode' }}>
+              {x}
+            </code>
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+</NetlifyForm>
+
+For an usage example have a look at [Contact form example](/examples/contact-form/#using-context).
 
 ### useNetlifyFormContext
 

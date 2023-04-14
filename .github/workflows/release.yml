@@ -35,6 +35,7 @@ jobs:
         with:
           extra_plugins: |
             @semantic-release/git
+          semantic_version: 19
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

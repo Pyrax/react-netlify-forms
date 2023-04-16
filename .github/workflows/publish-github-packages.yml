@@ -18,7 +18,7 @@ jobs:
           scope: '@Pyrax'
           cache: 'yarn'
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable --immutable-cache --check-cache
       - name: Autoscope package.json
         uses: khaazz/action-autoscope@master
 

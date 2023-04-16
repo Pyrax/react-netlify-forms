@@ -20,7 +20,7 @@ jobs:
           node-version: '16.x'
           cache: 'yarn'
 
-      - run: yarn install --immutable --immutable-cache --check-cache
+      - run: yarn install
       - run: yarn test
       - name: Build # builds the docs site with --prefix-paths for gh-pages
         run: |

@@ -20,7 +20,7 @@ jobs:
           node-version: '16.x'
           cache: 'yarn'
 
-      - run: yarn install --immutable --immutable-cache --check-cache
+      - run: yarn install
       - name: Check tests before release
         run: yarn test
 

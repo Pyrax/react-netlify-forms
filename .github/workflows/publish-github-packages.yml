@@ -16,14 +16,8 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@Pyrax'
+          cache: 'yarn'
 
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.yarn
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       - run: yarn install --frozen-lockfile
       - name: Autoscope package.json
         uses: khaazz/action-autoscope@master

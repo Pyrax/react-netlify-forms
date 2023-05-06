@@ -6679,6 +6679,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv@npm:^16.0.3":
+  version: 16.0.3
+  resolution: "dotenv@npm:16.0.3"
+  checksum: afcf03f373d7a6d62c7e9afea6328e62851d627a4e73f2e12d0a8deae1cd375892004f3021883f8aec85932cd2834b091f568ced92b4774625b321db83b827f8
+  languageName: node
+  linkType: hard
+
 "dotenv@npm:^7.0.0":
   version: 7.0.0
   resolution: "dotenv@npm:7.0.0"
@@ -13071,6 +13078,7 @@ __metadata:
     babel-loader: ^8.2.5
     babel-preset-gatsby: ^2.22.0
     core-js: ^3.25.0
+    dotenv: ^16.0.3
     eslint: ^8.23.0
     formik: ^2.2.9
     gatsby: ^4.21.1

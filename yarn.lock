@@ -18854,6 +18854,7 @@ __metadata:
     "@babel/core": ^7.21.8
     "@babel/eslint-parser": ^7.21.8
     "@babel/plugin-transform-regenerator": ^7.21.5
+    "@babel/preset-modules": ^0.1.5
     "@babel/preset-react": ^7.18.6
     cross-env: ^7.0.2
     cz-conventional-changelog: 3.2.0

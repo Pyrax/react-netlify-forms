@@ -27,6 +27,7 @@
     "@mdx-js/react": "^1.6.22",
     "@theme-ui/components": "^0.14.7",
     "@theme-ui/prism": "^0.14.7",
+    "dotenv": "^16.0.3",
     "formik": "^2.2.9",
     "gatsby": "^4.21.1",
     "gatsby-plugin-catch-links": "^4.22.0",

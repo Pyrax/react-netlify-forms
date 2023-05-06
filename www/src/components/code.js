@@ -74,7 +74,7 @@ export const LiveCode = ({ children }) => (
   </LiveProvider>
 )
 
-export default (props) => {
+const Code = (props) => {
   if (props.live) {
     return <LiveCode {...props} />
   }
@@ -83,3 +83,5 @@ export default (props) => {
   }
   return <Prism {...props} />
 }
+
+export default Code

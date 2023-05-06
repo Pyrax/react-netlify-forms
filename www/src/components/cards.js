@@ -11,7 +11,7 @@ const gridStyles = (columns = 2) => {
   }
 }
 
-export default ({ children, columns, ...props }) => (
+const Cards = ({ children, columns, ...props }) => (
   <div
     {...props}
     sx={{
@@ -36,3 +36,5 @@ export default ({ children, columns, ...props }) => (
     {children}
   </div>
 )
+
+export default Cards

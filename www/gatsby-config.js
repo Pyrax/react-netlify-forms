@@ -40,10 +40,12 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
-        remarkPlugins: [
-          wrapESMPlugin('remark-slug'),
-          [wrapESMPlugin('remark-toc'), { tight: true }]
-        ]
+        mdxOptions: {
+          remarkPlugins: [
+            wrapESMPlugin('remark-slug'),
+            [wrapESMPlugin('remark-toc'), { tight: true }]
+          ]
+        }
       }
     },
     {
@@ -51,8 +53,28 @@ module.exports = {
       options: {
         name: 'pages',
         path: './src/pages/'
-      },
-      __key: 'pages'
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'components',
+        path: './src/components/'
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'readme',
+        path: './README.md'
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'license',
+        path: './LICENSE.md'
+      }
     }
   ]
 }

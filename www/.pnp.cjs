@@ -21619,7 +21619,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["debug", "virtual:f9e7aea43ca42314d3470c44ab17df011557f35698afb82b0374b0272b65f4374a2581351dee7034a65ea18723b5236b442b101f8c108fefb6d0f082cfcb4244#npm:4.3.4"],\
             ["engine.io", "npm:6.2.1"],\
             ["socket.io-adapter", "npm:2.4.0"],\
-            ["socket.io-parser", "npm:4.2.2"]\
+            ["socket.io-parser", "npm:4.2.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -21641,16 +21641,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@socket.io/component-emitter", "npm:3.1.0"],\
             ["debug", "virtual:f9e7aea43ca42314d3470c44ab17df011557f35698afb82b0374b0272b65f4374a2581351dee7034a65ea18723b5236b442b101f8c108fefb6d0f082cfcb4244#npm:4.3.4"],\
             ["engine.io-client", "npm:6.2.3"],\
-            ["socket.io-parser", "npm:4.2.2"]\
+            ["socket.io-parser", "npm:4.2.3"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["socket.io-parser", [\
-        ["npm:4.2.2", {\
-          "packageLocation": "./.yarn/cache/socket.io-parser-npm-4.2.2-22f4e4a017-ba929645cb.zip/node_modules/socket.io-parser/",\
+        ["npm:4.2.3", {\
+          "packageLocation": "./.yarn/cache/socket.io-parser-npm-4.2.3-c3c994950a-f14030d09c.zip/node_modules/socket.io-parser/",\
           "packageDependencies": [\
-            ["socket.io-parser", "npm:4.2.2"],\
+            ["socket.io-parser", "npm:4.2.3"],\
             ["@socket.io/component-emitter", "npm:3.1.0"],\
             ["debug", "virtual:f9e7aea43ca42314d3470c44ab17df011557f35698afb82b0374b0272b65f4374a2581351dee7034a65ea18723b5236b442b101f8c108fefb6d0f082cfcb4244#npm:4.3.4"]\
           ],\

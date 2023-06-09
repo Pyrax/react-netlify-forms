@@ -29,7 +29,7 @@
     "@theme-ui/prism": "^0.14.7",
     "dotenv": "^16.0.3",
     "formik": "^2.2.9",
-    "gatsby": "^5.9.0",
+    "gatsby": "^5.9.1",
     "gatsby-plugin-catch-links": "^5.9.0",
     "gatsby-plugin-manifest": "^5.9.0",
     "gatsby-plugin-mdx": "^5.9.0",

@@ -3,7 +3,7 @@ import { jsx, Themed } from 'theme-ui'
 import { MDXProvider } from '@mdx-js/react'
 import { Location } from '@reach/router'
 import { Container } from '@theme-ui/components'
-import { Global } from '@emotion/core'
+import { Global } from '@emotion/react'
 
 import { SEO } from './seo'
 import { MarkdownNavLink, MarkdownLink } from './markdown-link'

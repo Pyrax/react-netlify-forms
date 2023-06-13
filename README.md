@@ -2,7 +2,7 @@
 
 <Hide>
 
-<h1 style="display:none;">react-netlify-forms</h1>
+<h1>react-netlify-forms</h1>
 
 </Hide>
 

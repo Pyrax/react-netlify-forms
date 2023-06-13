@@ -60,7 +60,7 @@ const components = {
   h6: heading('h6'),
   Alert,
   Hide: (props) => (
-    <div style={{ display: 'none' }} aria-hidden>{children}</div>
+    <div style={{ display: 'none' }} aria-hidden>{props.children}</div>
   )
 }
 

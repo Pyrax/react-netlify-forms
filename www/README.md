@@ -1,6 +1,10 @@
 <center>
 
+<Hide>
+
 <h1 style="display:none;">react-netlify-forms</h1>
+
+</Hide>
 
 > React components and hooks giving you the power of Netlify Forms. Start building serverless forms on Netlify with React. Honeypot fields and reCAPTCHA are included as ready-to-use components.
 
@@ -9,11 +13,15 @@
 [![JavaScript Style Guide](https://flat.badgen.net/badge/code%20style/standard/f2a)](https://standardjs.com)
 [![License](https://flat.badgen.net/github/license/Pyrax/react-netlify-forms)](https://github.com/Pyrax/react-netlify-forms/blob/master/LICENSE.md)
 
-<div style="display:none;" aria-hidden>
+<Hide>
+
+<div>
 
 [Go to documentation with live demo.](https://pyrax.github.io/react-netlify-forms)
 
 </div>
+
+</Hide>
 
 </center>
 

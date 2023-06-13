@@ -58,7 +58,10 @@ const components = {
   h4: heading('h4'),
   h5: heading('h5'),
   h6: heading('h6'),
-  Alert
+  Alert,
+  Hide: (props) => (
+    <div style={{ display: 'none' }} aria-hidden>{children}</div>
+  )
 }
 
 export default components

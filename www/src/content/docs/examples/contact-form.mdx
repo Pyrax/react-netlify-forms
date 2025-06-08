@@ -1,0 +1,133 @@
+---
+title: Contact Form Example
+---
+
+## Get started
+
+First, import required components in your class or function:
+
+```js
+import { NetlifyForm, Honeypot } from 'react-netlify-forms'
+```
+
+Then, you can use the `NetlifyForm` component in place of the standard form tag. It will provide you form handlers, which manage submitting data to Netlify. Play around and modify this interactive example (`sx` is used for styling):
+
+```jsx live
+<NetlifyForm
+  name='Contact'
+  action='/thanks'
+  honeypotName='bot-field'
+  onSuccess={(response, context) => {
+    console.log('Successfully sent form data to Netlify Server')
+    context.formRef.current.reset()
+  }}
+>
+  {({ handleChange, success, error }) => (
+    <>
+      <Honeypot />
+      {success && (
+        <p sx={{ variant: 'alerts.success', p: 3 }}>
+          Thanks for contacting us!
+        </p>
+      )}
+      {error && (
+        <p sx={{ variant: 'alerts.muted', p: 3 }}>
+          Sorry, we could not reach servers. Because it only works on Netlify,
+          our GitHub demo does not provide a response.
+        </p>
+      )}
+      <div>
+        <label htmlFor='name' sx={{ variant: 'forms.label' }}>
+          Name:
+        </label>
+        <input
+          type='text'
+          name='name'
+          id='name'
+          onChange={handleChange}
+          sx={{ variant: 'forms.input' }}
+        />
+      </div>
+      <div sx={{ pt: 2 }}>
+        <label htmlFor='message' sx={{ variant: 'forms.label' }}>
+          Message:
+        </label>
+        <textarea
+          type='text'
+          name='message'
+          id='message'
+          rows='4'
+          onChange={handleChange}
+          sx={{ variant: 'forms.textarea' }}
+        />
+      </div>
+      <div sx={{ pt: 3 }}>
+        <button type='submit' sx={{ variant: 'buttons.success' }}>
+          Submit
+        </button>
+        <button type='reset' sx={{ variant: 'buttons.danger' }}>
+          Reset
+        </button>
+      </div>
+    </>
+  )}
+</NetlifyForm>
+```
+
+## Using context
+
+Now, that we know how to quickly build a form, let us take a closer look at how we can get control over the form.
+This is where context jumps in. Actually, we already used it. We consumed it as children of `NetlifyForm` to get access to state and form handlers.
+We could also use it to access `formRef` and manually reset the form as this example shows:
+
+```jsx live
+<NetlifyForm name='Contact' action='/thanks' honeypotName='bot-field'>
+  {({ handleChange, formRef }) => (
+    <div sx={{ variant: 'forms.inline' }}>
+      <input
+        type='text'
+        name='name'
+        id='name'
+        onChange={handleChange}
+        sx={{ variant: 'forms.inlineInput' }}
+      />
+      {/* This button, for example, uses the context to access formRef and then
+       ** programmatically reset this form. */}
+      <button
+        type='button'
+        sx={{ variant: 'buttons.danger' }}
+        onClick={() => formRef.current.reset()}
+      >
+        Custom reset button
+      </button>
+    </div>
+  )}
+</NetlifyForm>
+```
+
+Same example, without destructuring, makes it clear where we access the context:
+
+```jsx live
+<NetlifyForm name='Contact' action='/thanks' honeypotName='bot-field'>
+  {(context) => (
+    <div sx={{ variant: 'forms.inline' }}>
+      <input
+        type='text'
+        name='name'
+        id='name'
+        onChange={context.handleChange}
+        sx={{ variant: 'forms.inlineInput' }}
+      />
+      <button
+        type='button'
+        sx={{ variant: 'buttons.danger' }}
+        onClick={() => context.formRef.current.reset()}
+      >
+        Custom reset button
+      </button>
+    </div>
+  )}
+</NetlifyForm>
+```
+
+Head over to the docs for a [complete list of context variables](/docs/#netlifyformcontext).

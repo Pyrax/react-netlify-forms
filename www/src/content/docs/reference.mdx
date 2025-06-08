@@ -1,0 +1,106 @@
+---
+title: Reference
+---
+
+import { NetlifyForm } from 'react-netlify-forms'
+
+## Components
+
+### NetlifyForm
+
+Initializes state and functions with `useNetlifyForm` and provides them with a context with `<NetlifyFormProvider/>`. Renders a form using `<NetlifyFormComponent/>` inside the context.
+
+Available props:
+
+| Name      | Req | Description                                                                                                                |
+| --------- | --- | -------------------------------------------------------------------------------------------------------------------------- |
+| children  | Y   | Children rendered inside the form like inputs.                                                                             |
+| formProps | N   | Additional props for the `<NetlifyFormComponent/>`. Can be used to override default methods like `onSubmit` and `onReset`. |
+| props     | N   | Passed as arguments to `useNetlifyForm` for setting options for the Netlify Form.                                          |
+
+### useNetlifyForm
+
+Hook used by `<NetlifyForm />` to create handlers and state which are used inside the form context.
+
+Available props:
+
+| Name            | Req | Description                                                             |
+| --------------- | --- | ----------------------------------------------------------------------- |
+| name            | Y   | Name of the form.                                                       |
+| action          | Y   | Form action to fallback to when JavaScript is disabled.                 |
+| honeypotName    | N   | Needed when a honeypot is used because SSR needs to know it in advance. |
+| enableRecaptcha | N   | Set this if reCAPTCHA is used because SSR needs to know it in advance.  |
+| onSuccess       | N   | Handler when data has been submitted to Netlify.                        |
+| onFailure       | N   | Handler when Netlify sent an error.                                     |
+
+### NetlifyFormProvider
+
+Providing values to `NetlifyFormContext`.
+
+Available props:
+
+| Name     | Req | Description          |
+| -------- | --- | -------------------- |
+| children | Y   | Children of context. |
+| props    | Y   | Context values.      |
+
+### NetlifyFormContext
+
+Form context which exposes form state, handlers and actions for consumers.
+
+{/* <NetlifyForm>
+  {(context) => (
+    <>
+      These are the props available through context:{' '}
+      <ul sx={{ variant: 'list.inline' }}>
+        {Object.keys(context).map((x) => (
+          <li key={`ctx-var-${x}`} sx={{ px: 2 }}>
+            <code bare sx={{ variant: 'styles.inlineCode' }}>
+              {x}
+            </code>
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+</NetlifyForm> */}
+
+For an usage example have a look at [Contact form example](/examples/contact-form/#using-context).
+
+### useNetlifyFormContext
+
+Hook-based variant for consuming `<NetlifyFormContext />`.
+
+### NetlifyFormComponent
+
+Renders a form with handlers provided by `NetlifyFormContext`.
+
+Available props:
+
+| Name     | Req | Description                                                                                                 |
+| -------- | --- | ----------------------------------------------------------------------------------------------------------- |
+| Children | Y   | Form content like inputs.                                                                                   |
+| props    | Y   | Additional props passed to the form. Can be used to override default methods like `onSubmit` and `onReset`. |
+
+### Honeypot
+
+Component to create a honeypot field which provides extra spam prevention. If a bot fills this field, Netlify dismisses the submitted form data.
+
+Available props:
+
+| Name  | Req | Description                                 |
+| ----- | --- | ------------------------------------------- |
+| label | N   | Label as text before honeypot field.        |
+| props | N   | Additional props for input of the honeypot. |
+
+### reCAPTCHA
+
+In Netlify dashboard you have to set SITE_RECAPTCHA_KEY and SITE_RECAPTCHA_SECRET. Also, make sure to provide SITE_RECAPTCHA_KEY to the reCAPTCHA component on the client using `siteKey`-prop.
+
+Available props:
+
+| Name      | Req | Description                                                                                                                                |
+| --------- | --- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| siteKey   | Y   | Recaptcha public site key.                                                                                                                 |
+| invisible | N   | Set whether reCAPTCHA should be invisible or not.                                                                                          |
+| _(any)_   | N   | Any other prop will be passed through to the [underlying component](https://www.npmjs.com/package/react-google-recaptcha#component-props). |

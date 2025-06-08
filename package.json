@@ -30,12 +30,15 @@
     "test": "bun run test:lint && bun run test:build",
     "test:build": "bun run build",
     "test:lint": "eslint .",
+    "docs:dev": "cd www && bun run dev",
+    "docs:build": "cd www && bun run build",
+    "docs:preview": "cd www && bun run preview",
     "prepare-deploy": "cd www && bun install && bun run clean && cp ../README.md README.md && cp ../LICENSE.md LICENSE.md",
     "predeploy:default": "bun run prepare-deploy && cd www && bun run build",
     "predeploy:prefix": "bun run prepare-deploy && cd www && bun run build:prefix",
     "deploy": "bun run build && bun run deploy:gh",
-    "deploy:gh": "bun run build && bun run predeploy:prefix && gh-pages -d www/public",
-    "deploy:netlify": "bun run build && bun run predeploy:default && netlify deploy --prod --dir=www/public"
+    "deploy:gh": "bun run build && bun run predeploy:prefix && gh-pages -d www/dist",
+    "deploy:netlify": "bun run build && bun run predeploy:default && netlify deploy --prod --dir=www/dist"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.2 || ^18.0.0 || ^19.0.0"

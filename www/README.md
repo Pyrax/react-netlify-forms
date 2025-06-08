@@ -41,7 +41,7 @@ This component must be used with Server-Side Rendering (SSR) because Netlify
 searches for a `data-netlify` attribute on HTML `form` tags to setup their
 Forms backend for you.
 
-➡️ _Suggestions for SSR: GatsbyJS, Next.js, react-static_
+➡️ _Suggestions for SSR: Astro, Next.js, Remix or Vite_
 
 </Alert>
 

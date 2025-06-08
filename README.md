@@ -1,10 +1,4 @@
-<center>
-
-<Hide>
-
-<h1>react-netlify-forms</h1>
-
-</Hide>
+# react-netlify-forms
 
 > React components and hooks giving you the power of Netlify Forms. Start building serverless forms on Netlify with React. Honeypot fields and reCAPTCHA are included as ready-to-use components.
 
@@ -13,17 +7,7 @@
 [![JavaScript Style Guide](https://flat.badgen.net/badge/code%20style/standard/f2a)](https://standardjs.com)
 [![License](https://flat.badgen.net/github/license/Pyrax/react-netlify-forms)](https://github.com/Pyrax/react-netlify-forms/blob/master/LICENSE.md)
 
-<Hide>
-
-<div>
-
 [Go to documentation with live demo.](https://pyrax.github.io/react-netlify-forms)
-
-</div>
-
-</Hide>
-
-</center>
 
 ## Features
 
@@ -33,30 +17,18 @@ It gives you all the features of Netlify Forms as simple and **reusable** React 
 - Spam prevention through included honeypot and reCAPTCHA components.
 - Can be used alone or together with form libraries such as Formik or react-hook-form.
 
-<Alert variant='muted'>
-
 ## Before using
 
 This component must be used with Server-Side Rendering (SSR) because Netlify
 searches for a `data-netlify` attribute on HTML `form` tags to setup their
 Forms backend for you.
 
-➡️ _Suggestions for SSR: GatsbyJS, Next.js, react-static_
-
-</Alert>
+_Suggestions: Astro, Next.js, Remix or Vite_
 
 ## Install
 
-Either install with NPM via:
-
 ```bash
 npm install --save react-netlify-forms
-```
-
-or with YARN via:
-
-```bash
-yarn add react-netlify-forms
 ```
 
 ## Usage
@@ -107,6 +79,6 @@ For more examples please browse through our website.
 
 MIT © [Björn Clees](https://github.com/Pyrax)
 
----
+## Acknowledgements
 
 Thanks to [create-react-library](https://www.npmjs.com/package/create-react-library) for providing quick setup for NPM packages.

@@ -9,7 +9,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			plugins: [starlightThemeRapide()],
-			title: 'React Netlify Forms',
+			title: 'react-netlify-forms',
 			description: 'React components and hooks giving you the power of Netlify Forms',
 			logo: {
 				src: './src/assets/logo.png',
@@ -28,6 +28,7 @@ export default defineConfig({
 					autogenerate: { directory: 'examples' },
 				},
 				{ slug: 'reference' },
+				{ slug: 'license' },
 			],
 		}),
 		mdx(),

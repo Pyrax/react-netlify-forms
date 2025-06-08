@@ -2,11 +2,13 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import mdx from '@astrojs/mdx';
+import starlightThemeRapide from 'starlight-theme-rapide';
 
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
 		starlight({
+			plugins: [starlightThemeRapide()],
 			title: 'React Netlify Forms',
 			description: 'React components and hooks giving you the power of Netlify Forms',
 			logo: {

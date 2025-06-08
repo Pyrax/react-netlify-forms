@@ -18,7 +18,8 @@
     "astro": "^5.6.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-netlify-forms": "link:react-netlify-forms",
     "sharp": "^0.32.5",
-    "react-netlify-forms": "link:../"
+    "starlight-theme-rapide": "^0.5.1"
   }
 }

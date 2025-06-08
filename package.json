@@ -26,19 +26,19 @@
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
-    "prepare": "run-s build",
-    "test": "run-s test:lint test:build",
-    "test:build": "run-s build",
+    "prepare": "bun run build",
+    "test": "bun run test:lint && bun run test:build",
+    "test:build": "bun run build",
     "test:lint": "eslint .",
-    "prepare-deploy": "cd www && yarn install && yarn clean && cp ../README.md README.md && cp ../LICENSE.md LICENSE.md",
-    "predeploy:default": "yarn prepare-deploy && cd www && yarn build",
-    "predeploy:prefix": "yarn prepare-deploy && cd www && yarn build:prefix",
-    "deploy": "yarn build && yarn deploy:gh",
-    "deploy:gh": "yarn build && yarn predeploy:prefix && gh-pages -d www/public",
-    "deploy:netlify": "yarn build && yarn predeploy:default && netlify deploy --prod --dir=www/public"
+    "prepare-deploy": "cd www && bun install && bun run clean && cp ../README.md README.md && cp ../LICENSE.md LICENSE.md",
+    "predeploy:default": "bun run prepare-deploy && cd www && bun run build",
+    "predeploy:prefix": "bun run prepare-deploy && cd www && bun run build:prefix",
+    "deploy": "bun run build && bun run deploy:gh",
+    "deploy:gh": "bun run build && bun run predeploy:prefix && gh-pages -d www/public",
+    "deploy:netlify": "bun run build && bun run predeploy:default && netlify deploy --prod --dir=www/public"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.2 || ^18.0.0"
+    "react": "^16.8.0 || ^17.0.2 || ^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.8",
@@ -80,5 +80,5 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "bun@1.0.0"
 }

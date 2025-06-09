@@ -22,6 +22,9 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun lint
 
+      - name: Build react-netlify-forms
+        run: bun run build
+
       - name: Build docs
         run: bun run docs:build
         env:

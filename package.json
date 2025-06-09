@@ -24,5 +24,6 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "packageManager": "bun@1.2.15"
+  "packageManager": "bun@1.2.15",
+  "version": "2.0.0"
 }

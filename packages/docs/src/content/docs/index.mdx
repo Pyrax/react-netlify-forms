@@ -1,13 +1,22 @@
-# react-netlify-forms
+---
+title: react-netlify-forms
+description: Get started with react-netlify-forms
+---
 
-> React components and hooks giving you the power of Netlify Forms. Start building serverless forms on Netlify with React. Honeypot fields and reCAPTCHA are included as ready-to-use components.
+import { Aside, Tabs, TabItem } from '@astrojs/starlight/components'
+
+<center>
+  
+<img src="/react-netlify-forms/favicon.png" alt="react-netlify-forms" style={{ maxHeight: '120px' }} />
+
+React components and hooks giving you the power of Netlify Forms. Start building serverless forms on Netlify with React. Honeypot fields and reCAPTCHA are included as ready-to-use components.
 
 [![NPM](https://flat.badgen.net/npm/v/react-netlify-forms)](https://www.npmjs.com/package/react-netlify-forms)
 [![minzipped package size](https://flat.badgen.net/bundlephobia/minzip/react-netlify-forms)](https://www.npmjs.com/package/react-netlify-forms)
 [![JavaScript Style Guide](https://flat.badgen.net/badge/code%20style/standard/f2a)](https://standardjs.com)
 [![License](https://flat.badgen.net/github/license/Pyrax/react-netlify-forms)](https://github.com/Pyrax/react-netlify-forms/blob/master/LICENSE.md)
 
-[Go to documentation with live demo.](https://pyrax.github.io/react-netlify-forms)
+</center>
 
 ## Features
 
@@ -17,7 +26,7 @@ It gives you all the features of Netlify Forms as simple and **reusable** React 
 - Spam prevention through included honeypot and reCAPTCHA components.
 - Can be used alone or together with form libraries such as Formik or react-hook-form.
 
-## Before using
+<Aside type="caution" title="Before using">
 
 This component must be used with Server-Side Rendering (SSR) because Netlify
 searches for a `data-netlify` attribute on HTML `form` tags to setup their
@@ -25,11 +34,32 @@ Forms backend for you.
 
 _Suggestions: Astro, Next.js, Remix or Vite_
 
+</Aside>
+
 ## Install
 
-```bash
-npm install --save react-netlify-forms
-```
+<Tabs>
+  <TabItem label="npm" icon="seti:npm">
+    ```sh
+    npm install react-netlify-forms
+    ```
+  </TabItem>
+  <TabItem label="pnpm" icon="pnpm">
+    ```sh
+    pnpm add react-netlify-forms
+    ```
+  </TabItem>
+  <TabItem label="Yarn" icon="seti:yarn">
+    ```sh
+    yarn add react-netlify-forms
+    ```
+  </TabItem>
+  <TabItem label="bun" icon="bun">
+    ```sh
+    bun add react-netlify-forms
+    ```
+  </TabItem>
+</Tabs>
 
 ## Usage
 
@@ -72,13 +102,3 @@ const ContactForm = () => (
 
 export default ContactForm
 ```
-
-For more examples please browse through our website.
-
-## License
-
-MIT © [Björn Clees](https://github.com/Pyrax)
-
-## Acknowledgements
-
-Thanks to [create-react-library](https://www.npmjs.com/package/create-react-library) for providing quick setup for NPM packages.

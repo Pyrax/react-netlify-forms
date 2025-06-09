@@ -1,0 +1,96 @@
+---
+title: react-hook-form
+---
+
+In this example we will create a simple newsletter signup form with react-hook-form. It only includes an email field which is validated client-side (note: client-side validation is not safe, thus you might see data other than emails in Netlify).
+
+react-hook-form takes a hook-base approach. Therefore, we have to import `useNetlifyForm` and `useForm`. Furthermore, we have to use `NetlifyFormProvider` and `NetlifyFormComponent` to render the form with context ourselves:
+
+```js
+import {
+  useNetlifyForm,
+  NetlifyFormProvider,
+  NetlifyFormComponent,
+  Honeypot
+} from 'react-netlify-forms'
+import { useForm } from 'react-hook-form'
+```
+
+First, we will set react-hook-form up by calling the hook `useForm` with our desired options. Then do the same for react-netlify-forms with `useNetlifyForm`. We link the submit handler from react-hook-form which validates our input with react-netlify-forms with the one from react-netlify-forms which sends the values to the server. Later, we will pass this custom handler to `onSubmit` directly to the form component.
+
+`NetlifyFormProvider` enables us to create the corresponding context by passing Netlify functions through props. In the following, the context is consumed by `NetlifyFormComponent` to render a form with all neccessary attributes including our custom submit method.
+
+Instead of managing form state through react-netlify-forms, it is now controlled by react-hook-form. Validation logic is defined when registering an input. In this example, we only have one email input set as required and check if it matches a regular expression.
+
+See the full example in action here:
+
+```jsx live
+function NewsletterForm() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm({ mode: 'onBlur' })
+  const netlify = useNetlifyForm({
+    name: 'react-hook-form',
+    action: '/thanks',
+    honeypotName: 'bot-field',
+    onSuccess: (response, context) => {
+      console.log('Successfully sent form data to Netlify Server')
+    }
+  })
+  const onSubmit = (data) => netlify.handleSubmit(null, data)
+
+  const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i
+
+  return (
+    <NetlifyFormProvider {...netlify}>
+      <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)}>
+        <Honeypot />
+        {netlify.success && (
+          <p>
+            Thanks for contacting us!
+          </p>
+        )}
+        {netlify.error && (
+          <p>
+            Sorry, we could not reach servers. Because it only works on Netlify,
+            our GitHub demo does not provide a response.
+          </p>
+        )}
+        <div>
+          <label htmlFor='email'>
+            Email:
+          </label>
+          <input
+            type='email'
+            id='email'
+            {...register('email', {
+              required: 'Email is required',
+              pattern: {
+                value: EMAIL_REGEX,
+                message: 'Invalid email address'
+              }
+            })}
+          />
+          {errors.email && (
+            <div>{errors.email.message}</div>
+          )}
+        </div>
+        <div>
+          <button type='submit'>
+            Submit
+          </button>
+          <button
+            type='reset'
+            onClick={() => reset()}
+          >
+            Reset
+          </button>
+        </div>
+      </NetlifyFormComponent>
+    </NetlifyFormProvider>
+  )
+}
+```

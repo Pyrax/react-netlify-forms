@@ -1,7 +1,0 @@
-build/
-public/
-.cache/
-dist/
-node_modules/
-.snapshots/
-*.min.js

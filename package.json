@@ -1,84 +1,28 @@
 {
-  "name": "react-netlify-forms",
-  "version": "1.3.5",
-  "homepage": "https://pyrax.github.io/react-netlify-forms",
-  "bugs": {
-    "url": "https://github.com/pyrax/react-netlify-forms/issues"
-  },
-  "description": "React components and hooks giving you the power of Netlify Forms. Start building serverless forms on Netlify with React.",
-  "keywords": [
-    "react",
-    "netlify",
-    "forms",
-    "netlify-forms",
-    "react-netlify-form",
-    "react-netlify-forms"
+  "name": "react-netlify-forms-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
-  "author": "Björn Clees <piranhadev@gmail.com> (https://github.com/pyrax/)",
-  "license": "MIT",
-  "repository": "Pyrax/react-netlify-forms",
-  "main": "dist/index.js",
-  "module": "dist/index.modern.js",
-  "source": "src/index.js",
-  "engines": {
-    "node": ">=10"
-  },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs",
-    "prepare": "run-s build",
-    "test": "run-s test:lint test:build",
-    "test:build": "run-s build",
-    "test:lint": "eslint .",
-    "prepare-deploy": "cd www && yarn install && yarn clean && cp ../README.md README.md && cp ../LICENSE.md LICENSE.md",
-    "predeploy:default": "yarn prepare-deploy && cd www && yarn build",
-    "predeploy:prefix": "yarn prepare-deploy && cd www && yarn build:prefix",
-    "deploy": "yarn build && yarn deploy:gh",
-    "deploy:gh": "yarn build && yarn predeploy:prefix && gh-pages -d www/public",
-    "deploy:netlify": "yarn build && yarn predeploy:default && netlify deploy --prod --dir=www/public"
-  },
-  "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.2 || ^18.0.0"
+    "build": "bun run --cwd packages/react-netlify-forms build",
+    "dev": "bun run --cwd packages/docs dev",
+    "lint": "biome check",
+    "format": "biome check --write .",
+    "docs:dev": "bun run --cwd packages/docs dev",
+    "docs:build": "bun run --cwd packages/docs build",
+    "docs:preview": "bun run --cwd packages/docs preview"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.8",
-    "@babel/eslint-parser": "^7.21.8",
-    "@babel/plugin-transform-regenerator": "^7.21.5",
-    "@babel/preset-modules": "^0.1.5",
-    "@babel/preset-react": "^7.18.6",
-    "cross-env": "^7.0.2",
+    "@biomejs/biome": "2.0.0-beta.6",
     "cz-conventional-changelog": "3.2.0",
-    "esbuild": "^0.17.18",
-    "eslint": "^8.40.0",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-config-standard-react": "^9.2.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-standard": "^4.0.1",
     "gh-pages": "^2.2.0",
-    "microbundle-crl": "^0.13.10",
-    "netlify-cli": "^2.52.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.0.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
-  },
-  "files": [
-    "dist"
-  ],
-  "dependencies": {
-    "react-google-recaptcha": "^2.1.0"
+    "netlify-cli": "^2.52.0"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "bun@1.2.15"
 }

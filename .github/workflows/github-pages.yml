@@ -1,9 +1,6 @@
 name: github pages
 
 on:
-  pull_request:
-    branches:
-      - master
   push:
     branches:
       - master
@@ -12,24 +9,26 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: '18.x'
-          cache: 'yarn'
+          bun-version-file: 'package.json'
 
-      - run: yarn install
-      - run: yarn test
-      - name: Build # builds the docs site with --prefix-paths for gh-pages
-        run: |
-          yarn predeploy:prefix
+      - run: bun install --frozen-lockfile
+      - run: bun lint
+
+      - name: Build react-netlify-forms
+        run: bun run build
+
+      - name: Build docs
+        run: bun run docs:build
         env:
           GATSBY_SITE_RECAPTCHA_KEY: ${{ secrets.GATSBY_SITE_RECAPTCHA_KEY }}
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./www/public
+          publish_dir: ./packages/docs/dist

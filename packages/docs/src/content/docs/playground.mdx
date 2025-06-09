@@ -1,0 +1,69 @@
+---
+title: Playground
+sidebar:
+  badge: Live
+---
+
+import LiveCode from '../../components/LiveCode'
+
+This is a playground for the react-netlify-forms library. Try to edit the code below and see the changes in the preview.
+
+<LiveCode client:idle code={`
+<NetlifyForm
+  name='Contact'
+  action='/thanks'
+  honeypotName='bot-field'
+  onSuccess={(response, context) => {
+    console.log('Successfully sent form data to Netlify Server')
+    context.formRef.current.reset()
+  }}
+>
+  {({ handleChange, success, error }) => (
+    <>
+      <Honeypot />
+      {success && (
+        <p>
+          Thanks for contacting us!
+        </p>
+      )}
+      {error && (
+        <p>
+          Sorry, we could not reach servers. Because it only works on Netlify,
+          our GitHub demo does not provide a response.
+        </p>
+      )}
+      <div>
+        <label htmlFor='name'>
+          Name:
+        </label>
+        <input
+          type='text'
+          name='name'
+          id='name'
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label htmlFor='message'>
+          Message:
+        </label>
+        <textarea
+          type='text'
+          name='message'
+          id='message'
+          rows='4'
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <button type='submit'>
+          Submit
+        </button>
+        <button type='reset'>
+          Reset
+        </button>
+      </div>
+    </>
+  )}
+</NetlifyForm>
+`} />

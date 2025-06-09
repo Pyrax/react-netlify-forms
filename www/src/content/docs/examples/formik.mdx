@@ -64,18 +64,18 @@ function NewsletterForm() {
       <NetlifyFormComponent onSubmit={handleSubmit}>
         <Honeypot />
         {netlify.success && (
-          <p sx={{ variant: 'alerts.success', p: 3 }}>
+          <p>
             Thanks for contacting us!
           </p>
         )}
         {netlify.error && (
-          <p sx={{ variant: 'alerts.muted', p: 3 }}>
+          <p>
             Sorry, we could not reach servers. Because it only works on Netlify,
             our GitHub demo does not provide a response.
           </p>
         )}
         <div>
-          <label htmlFor='email' sx={{ variant: 'forms.label' }}>
+          <label htmlFor='email'>
             Email:
           </label>
           <input
@@ -85,19 +85,16 @@ function NewsletterForm() {
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.email}
-            sx={{
-              variant: 'forms.input'
-            }}
           />
           {touched.email && errors.email ? (
-            <div sx={{ variant: 'text.error' }}>{errors.email}</div>
+            <div>{errors.email}</div>
           ) : null}
         </div>
-        <div sx={{ pt: 3 }}>
-          <button type='submit' sx={{ variant: 'buttons.success' }}>
+        <div>
+          <button type='submit'>
             Submit
           </button>
-          <button type='reset' sx={{ variant: 'buttons.danger' }}>
+          <button type='reset'>
             Reset
           </button>
         </div>

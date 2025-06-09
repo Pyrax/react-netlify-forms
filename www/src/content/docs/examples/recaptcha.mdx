@@ -36,18 +36,18 @@ Then, you can use the `NetlifyForm` component in place of the standard form tag.
       <Honeypot />
       <Recaptcha siteKey={GATSBY_SITE_RECAPTCHA_KEY} invisible />
       {success && (
-        <p sx={{ variant: 'alerts.success', p: 3 }}>
+        <p>
           Thanks for contacting us!
         </p>
       )}
       {error && (
-        <p sx={{ variant: 'alerts.muted', p: 3 }}>
+        <p>
           Sorry, we could not reach servers. Because it only works on Netlify,
           our GitHub demo does not provide a response.
         </p>
       )}
       <div>
-        <label htmlFor='name' sx={{ variant: 'forms.label' }}>
+        <label htmlFor='name'>
           Name:
         </label>
         <input
@@ -55,11 +55,10 @@ Then, you can use the `NetlifyForm` component in place of the standard form tag.
           name='name'
           id='name'
           onChange={handleChange}
-          sx={{ variant: 'forms.input' }}
         />
       </div>
-      <div sx={{ pt: 2 }}>
-        <label htmlFor='message' sx={{ variant: 'forms.label' }}>
+      <div>
+        <label htmlFor='message'>
           Message:
         </label>
         <textarea
@@ -68,14 +67,13 @@ Then, you can use the `NetlifyForm` component in place of the standard form tag.
           id='message'
           rows='4'
           onChange={handleChange}
-          sx={{ variant: 'forms.textarea' }}
         />
       </div>
-      <div sx={{ pt: 3 }}>
-        <button type='submit' sx={{ variant: 'buttons.success' }}>
+      <div>
+        <button type='submit'>
           Submit
         </button>
-        <button type='reset' sx={{ variant: 'buttons.danger' }}>
+        <button type='reset'>
           Reset
         </button>
       </div>

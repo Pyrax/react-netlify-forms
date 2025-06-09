@@ -52,10 +52,10 @@ Form context which exposes form state, handlers and actions for consumers.
   {(context) => (
     <>
       These are the props available through context:{' '}
-      <ul sx={{ variant: 'list.inline' }}>
+      <ul>
         {Object.keys(context).map((x) => (
-          <li key={`ctx-var-${x}`} sx={{ px: 2 }}>
-            <code bare sx={{ variant: 'styles.inlineCode' }}>
+          <li key={`ctx-var-${x}`}>
+            <code bare>
               {x}
             </code>
           </li>

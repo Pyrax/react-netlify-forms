@@ -25,7 +25,7 @@ export const NetlifyFormComponent = ({ children, ...props }) => {
   return (
     <form
       ref={formRef}
-      method='post'
+      method="post"
       name={formName}
       action={formAction}
       onSubmit={handleSubmit}
@@ -35,14 +35,14 @@ export const NetlifyFormComponent = ({ children, ...props }) => {
       {...props}
     >
       {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-      <input type='hidden' name='form-name' value={formName} />
+      <input type="hidden" name="form-name" value={formName} />
 
       {children
         ? isFunction(children)
           ? children(context)
           : !isEmptyChildren(children)
-          ? children
-          : null
+            ? children
+            : null
         : null}
     </form>
   )

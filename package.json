@@ -7,28 +7,17 @@
   "scripts": {
     "build": "bun run --cwd packages/react-netlify-forms build",
     "dev": "bun run --cwd packages/docs dev",
-    "test": "bun run --cwd packages/react-netlify-forms test",
-    "lint": "bun run --cwd packages/react-netlify-forms test:lint",
+    "lint": "biome check",
+    "format": "biome format --write .",
     "docs:dev": "bun run --cwd packages/docs dev",
     "docs:build": "bun run --cwd packages/docs build",
     "docs:preview": "bun run --cwd packages/docs preview"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.0.0-beta.6",
     "cz-conventional-changelog": "3.2.0",
-    "eslint": "^8.40.0",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-config-standard-react": "^9.2.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-standard": "^4.0.1",
     "gh-pages": "^2.2.0",
-    "netlify-cli": "^2.52.0",
-    "prettier": "^2.0.4"
+    "netlify-cli": "^2.52.0"
   },
   "config": {
     "commitizen": {

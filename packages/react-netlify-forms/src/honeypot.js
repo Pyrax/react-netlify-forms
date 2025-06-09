@@ -12,7 +12,7 @@ export const Honeypot = ({
       <label>
         {label}{' '}
         <input
-          type='text'
+          type="text"
           {...props}
           name={honeypotName}
           onChange={handleChange}

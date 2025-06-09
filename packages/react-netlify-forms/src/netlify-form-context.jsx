@@ -1,6 +1,6 @@
-import React from 'react'
+import { createContext, useContext } from 'react'
 
-export const NetlifyFormContext = React.createContext()
+export const NetlifyFormContext = createContext()
 NetlifyFormContext.displayName = 'NetlifyFormContext'
 
 export const NetlifyFormProvider = ({ children, ...props }) => (
@@ -10,5 +10,5 @@ export const NetlifyFormProvider = ({ children, ...props }) => (
 )
 
 export function useNetlifyFormContext() {
-  return React.useContext(NetlifyFormContext)
+  return useContext(NetlifyFormContext)
 }

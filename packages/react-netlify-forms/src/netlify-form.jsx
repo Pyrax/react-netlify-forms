@@ -1,4 +1,3 @@
-import React from 'react'
 import { encodeFormData } from './utils'
 import NetlifyFormReducer from './netlify-form-reducer'
 import { NetlifyFormProvider } from './netlify-form-context'

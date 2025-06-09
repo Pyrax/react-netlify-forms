@@ -1,4 +1,3 @@
-import React from 'react'
 import { isFunction, isEmptyChildren } from './utils'
 import { useNetlifyFormContext } from './netlify-form-context'
 

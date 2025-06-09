@@ -1,7 +1,9 @@
 // @ts-check
-import { defineConfig } from 'astro/config'
-import starlight from '@astrojs/starlight'
+
 import mdx from '@astrojs/mdx'
+import react from '@astrojs/react'
+import starlight from '@astrojs/starlight'
+import { defineConfig } from 'astro/config'
 import starlightThemeRapide from 'starlight-theme-rapide'
 
 // https://astro.build/config
@@ -16,6 +18,7 @@ export default defineConfig({
         src: './src/assets/logo.png',
         alt: 'react-netlify-forms'
       },
+      favicon: '/favicon.png',
       social: [
         {
           icon: 'github',
@@ -28,11 +31,13 @@ export default defineConfig({
           label: 'Examples',
           autogenerate: { directory: 'examples' }
         },
+        { slug: 'playground' },
         { slug: 'reference' },
         { slug: 'license' }
       ]
     }),
-    mdx()
+    mdx(),
+    react()
   ],
   site: 'https://pyrax.github.io/react-netlify-forms',
   base: '/react-netlify-forms'

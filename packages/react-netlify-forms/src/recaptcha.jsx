@@ -1,5 +1,5 @@
-import { useNetlifyFormContext } from './netlify-form-context'
 import GoogleRecaptcha from 'react-google-recaptcha'
+import { useNetlifyFormContext } from './netlify-form-context'
 
 export const Recaptcha = ({
   siteKey = '',

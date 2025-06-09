@@ -1,8 +1,8 @@
-import { useReducer, useRef, useCallback } from 'react'
-import { encodeFormData } from './utils'
-import NetlifyFormReducer from './netlify-form-reducer'
-import { NetlifyFormProvider } from './netlify-form-context'
+import { useCallback, useReducer, useRef } from 'react'
 import { NetlifyFormComponent } from './netlify-form-component'
+import { NetlifyFormProvider } from './netlify-form-context'
+import NetlifyFormReducer from './netlify-form-reducer'
+import { encodeFormData } from './utils'
 
 export const useNetlifyForm = ({
   name = 'Form',

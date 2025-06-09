@@ -1,5 +1,5 @@
-import { isFunction, isEmptyChildren } from './utils'
 import { useNetlifyFormContext } from './netlify-form-context'
+import { isEmptyChildren, isFunction } from './utils'
 
 export const NetlifyFormComponent = ({ children, ...props }) => {
   const context = useNetlifyFormContext()

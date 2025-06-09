@@ -1,31 +1,18 @@
 ---
-title: reCAPTCHA
-description: Contact form with invisible reCAPTCHA
+title: Playground
+sidebar:
+  badge: Live
 ---
 
-First, import required components in your class or function:
+import LiveCode from '../../components/LiveCode'
 
-```js
-import { NetlifyForm, Honeypot, Recaptcha } from 'react-netlify-forms'
-```
+This is a playground for the react-netlify-forms library. Try to edit the code below and see the changes in the preview.
 
-Also make sure to set the following environment variables for Netlify:
-
-- `SITE_RECAPTCHA_KEY` (used by Netlify)
-- `SITE_RECAPTCHA_SECRET` (used by Netlify)
-
-Additionally, you need to make sure to pass `SITE_RECAPTCHA_KEY` as a prop to the reCAPTCHA-component.
-
-_This example is served by Gatsby and uses an additional variable called GATSBY_SITE_RECAPTCHA_KEY for that._
-
-Then, you can use the `NetlifyForm` component in place of the standard form tag. It will provide you form handlers, which manage submitting data to Netlify. Play around and modify this interactive example (`sx` is used for styling):
-
-```jsx live
+<LiveCode client:idle code={`
 <NetlifyForm
-  name='reCAPTCHA'
+  name='Contact'
   action='/thanks'
   honeypotName='bot-field'
-  enableRecaptcha
   onSuccess={(response, context) => {
     console.log('Successfully sent form data to Netlify Server')
     context.formRef.current.reset()
@@ -34,7 +21,6 @@ Then, you can use the `NetlifyForm` component in place of the standard form tag.
   {({ handleChange, success, error }) => (
     <>
       <Honeypot />
-      <Recaptcha siteKey={GATSBY_SITE_RECAPTCHA_KEY} invisible />
       {success && (
         <p>
           Thanks for contacting us!
@@ -80,4 +66,4 @@ Then, you can use the `NetlifyForm` component in place of the standard form tag.
     </>
   )}
 </NetlifyForm>
-```
+`} />

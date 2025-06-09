@@ -8,7 +8,7 @@
     "build": "bun run --cwd packages/react-netlify-forms build",
     "dev": "bun run --cwd packages/docs dev",
     "lint": "biome check",
-    "format": "biome format --write .",
+    "format": "biome check --write .",
     "docs:dev": "bun run --cwd packages/docs dev",
     "docs:build": "bun run --cwd packages/docs build",
     "docs:preview": "bun run --cwd packages/docs preview"

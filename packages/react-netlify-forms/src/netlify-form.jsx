@@ -1,3 +1,4 @@
+import { useReducer, useRef, useCallback } from 'react'
 import { encodeFormData } from './utils'
 import NetlifyFormReducer from './netlify-form-reducer'
 import { NetlifyFormProvider } from './netlify-form-context'
@@ -25,9 +26,9 @@ export const useNetlifyForm = ({
     recaptchaEnabled: enableRecaptcha,
     recaptchaInvisible: false
   }
-  const [state, dispatch] = React.useReducer(NetlifyFormReducer, initialState)
-  const formRef = React.useRef(null)
-  const recaptchaRef = React.useRef(null)
+  const [state, dispatch] = useReducer(NetlifyFormReducer, initialState)
+  const formRef = useRef(null)
+  const recaptchaRef = useRef(null)
 
   const handleChange = ({ target: { name, value, files } }) => {
     dispatch({
@@ -84,10 +85,10 @@ export const useNetlifyForm = ({
     dispatch({ type: 'SET_SUCCESS' })
     return onSuccess(response, context)
   }
-  const setHoneypotName = React.useCallback((ref) => {
+  const setHoneypotName = useCallback((ref) => {
     return dispatch({ type: 'SET_HONEYPOT_NAME', payload: ref })
   }, [])
-  const enableRecaptchaHandler = React.useCallback((enable) => {
+  const enableRecaptchaHandler = useCallback((enable) => {
     return dispatch({ type: 'ENABLE_RECAPTCHA', payload: enable })
   }, [])
 

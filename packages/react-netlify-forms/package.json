@@ -28,7 +28,8 @@
   },
   "scripts": {
     "build": "bun build ./src/index.js --outdir ./dist --production --minify --sourcemap=linked --external react --jsx=react-jsx",
-    "start": "bun run build --watch"
+    "start": "bun run build --watch",
+    "prepublishOnly": "bunx cp ../../README.md ./dist/README.md"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.2 || ^18.0.0 || ^19.0.0"

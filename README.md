@@ -2,10 +2,9 @@
 
 > React components and hooks giving you the power of Netlify Forms. Start building serverless forms on Netlify with React. Honeypot fields and reCAPTCHA are included as ready-to-use components.
 
-[![NPM](https://flat.badgen.net/npm/v/react-netlify-forms)](https://www.npmjs.com/package/react-netlify-forms)
-[![minzipped package size](https://flat.badgen.net/bundlephobia/minzip/react-netlify-forms)](https://www.npmjs.com/package/react-netlify-forms)
-[![JavaScript Style Guide](https://flat.badgen.net/badge/code%20style/standard/f2a)](https://standardjs.com)
-[![License](https://flat.badgen.net/github/license/Pyrax/react-netlify-forms)](https://github.com/Pyrax/react-netlify-forms/blob/master/LICENSE.md)
+[![NPM Version](https://img.shields.io/npm/v/react-netlify-forms)](https://www.npmjs.com/package/react-netlify-forms)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-netlify-forms)](http://bundlephobia.com/package/react-netlify-forms)
+[![Checked with Biome](https://img.shields.io/badge/Checked_with-Biome-60a5fa?&logo=biome)](https://biomejs.dev)
 
 [Go to documentation with live demo.](https://pyrax.github.io/react-netlify-forms)
 

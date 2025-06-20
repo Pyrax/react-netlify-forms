@@ -15,7 +15,8 @@ export default defineConfig({
       description:
         'React components and hooks giving you the power of Netlify Forms',
       editLink: {
-        baseUrl: 'https://github.com/pyrax/react-netlify-forms/edit/master/packages/docs/'
+        baseUrl:
+          'https://github.com/pyrax/react-netlify-forms/edit/master/packages/docs/'
       },
       logo: {
         src: './src/assets/logo.png',
